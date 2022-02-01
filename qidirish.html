@@ -16,6 +16,7 @@
             </svg>
         </span>
         <h2>Aviabiletlar</h2>
+        <span>&nbsp;</span>
     </header>
     <div class="tab">
         <div class="tab-controls">
@@ -356,8 +357,47 @@
         </div>
     </section>
 </section>
-<section id="places">
-    
+<section class="help-window">
+    <div class="overlay"></div>
+    <div class="window-content">
+        <div class="window-header">
+            <h2>Qayerdan</h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+       </div>
+       <div class="window-inner">
+           <div class="search-group">
+               <input type="text" class="form-control" id="search-input" placeholder="Shahar yoki aeroport">
+               <span class="search-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.5">
+                        <path d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z" stroke="#929292" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L15 15" stroke="#929292" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+               </span>
+               <span class="input-clear">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM11.7303 4.26967C12.0232 4.56256 12.0232 5.03744 11.7303 5.33033L9.06066 8L11.7303 10.6697C12.0232 10.9626 12.0232 11.4374 11.7303 11.7303C11.4374 12.0232 10.9626 12.0232 10.6697 11.7303L8 9.06066L5.33033 11.7303C5.03744 12.0232 4.56256 12.0232 4.26967 11.7303C3.97678 11.4374 3.97678 10.9626 4.26967 10.6697L6.93934 8L4.26967 5.33033C3.97678 5.03744 3.97678 4.56256 4.26967 4.26967C4.56256 3.97678 5.03744 3.97678 5.33033 4.26967L8 6.93934L10.6697 4.26967C10.9626 3.97678 11.4374 3.97678 11.7303 4.26967Z" fill="black"/>
+                </svg>                    
+               </span>
+           </div>
+           <ul class="results">
+               <li>Buxoro <span>O'zbekiston</span></li>
+               <li>Buxoro <span>O'zbekiston</span></li>
+               <li>Buxoro <span>O'zbekiston</span></li>
+               <li>Buxoro <span>O'zbekiston</span></li>
+               <li>Buxoro <span>O'zbekiston</span></li>
+               <li>Buxoro <span>O'zbekiston</span></li>
+               <li>Buxoro <span>O'zbekiston</span></li>
+               <li>Buxoro <span>O'zbekiston</span></li>
+           </ul>
+       </div>
+        
+
+    </div>
 </section>
     <script>
         window.onload = function(){
@@ -368,6 +408,27 @@
                     item.classList.add("active");
                     document.querySelector(item.getAttribute("data-target")).classList.add("active")
                 })
+            })
+
+            document.querySelectorAll(".from.search-btn").forEach(function(item){
+                item.addEventListener("click", function(event){
+                    document.querySelector(".help-window").classList.add("active");
+                })
+            })
+            document.querySelectorAll(".window-header svg")[0].addEventListener("click", function(event){
+                document.querySelector(".help-window").classList.remove("active");
+            })
+            document.querySelector("#search-input").addEventListener("keyup", function(event){
+                if (event.target.value.length>0){
+                    document.querySelector(".input-clear").classList.add("show");
+                } else {
+                    document.querySelector(".input-clear").classList.remove("show");
+                }
+            })
+            document.querySelector(".input-clear").addEventListener("click", function(event){
+                document.querySelector("#search-input").value="";
+                document.querySelector(".input-clear").classList.remove("show");
+                document.querySelector("#search-input").focus()
             })
         }
     </script>

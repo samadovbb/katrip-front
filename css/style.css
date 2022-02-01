@@ -23,13 +23,8 @@ body{
 header.page{
     padding: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-}
-
-header.page span{
-    position: absolute;
-    left: 20px;
 }
 
 header.page h2{
@@ -626,4 +621,100 @@ a{
     top: 45%;
     background-color: #f3f3f3;
     right: -6px;
+}
+
+.help-window .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000088;
+}
+
+.help-window{
+    position: absolute;
+    bottom: -100%;
+    height: 100%;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.help-window.active{
+    bottom: 0;
+}
+
+.active .window-content{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-height: calc(100vh - 60px);
+    background-color: #fff;
+    overflow-y: auto;
+    padding: 27px 20px;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+}
+
+.window-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-group{
+    margin-top: 20px;
+    position: relative;
+}
+
+.search-group input{
+    font-family: "Poppins", sans-serif;
+    padding: 15px;
+    padding-left: 45px;
+    font-size: 14px;
+    background-color: #F6F6F6;
+    display: block;
+    width: 100%;
+}
+
+.search-group input::placeholder{
+    color: #B6B6B6;
+}
+
+.search-group .search-icon{
+    position: absolute;
+    top: 13px;
+    left: 10px;
+}
+
+.results{
+    margin-top: 10px;
+    height: calc(80vh - 120px);
+    overflow-y: auto;
+}
+
+.results li{
+    list-style-type: none;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid #E2E2E2;
+    display: flex;
+    flex-direction: column;
+}
+
+.results li span{
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.input-clear{
+    display: none;
+}
+
+.input-clear.show{
+    display: block;
+    position: absolute;
+    top: 17px;
+    right: 12px;
 }
