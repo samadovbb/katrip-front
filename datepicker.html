@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+    <link rel="stylesheet" href="./css/datepicker.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <select name="month" id="month" class="month1">
+        <option value="1">Yanvar</option>
+        <option value="2">Fevral</option>
+        <option value="3">Mart</option>
+        <option value="4">Aprel</option>
+        <option value="5">May</option>
+        <option value="6">Iyun</option>
+        <option value="7">Iyul</option>
+        <option value="8">Avgust</option>
+        <option value="9">Sentyabr</option>
+        <option value="10">Oktyabr</option>
+        <option value="11">Noyabr</option>
+        <option value="12">Dekabr</option>
+    </select>
+    <select name="year" id="year" class="year">
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+      <option value="2025">2025</option>
+      <option value="2026">2026</option>
+      <option value="2027">2027</option>
+  </select>
+    <div class="container">
+      <div class="calendar">
+        <div class="weekdays">
+          <div>YA</div>
+          <div>DU</div>
+          <div>SE</div>
+          <div>CH</div>
+          <div>PA</div>
+          <div>JU</div>
+          <div>SH</div>
+        </div>
+        <div class="days"></div>
+      </div>
+    </div>
+
+    <script src="./js/datepicker.js"></script>
+  </body>
+</html>
