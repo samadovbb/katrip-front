@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qidirish</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/datepicker.css">
 </head>
 <body >
 <section class="full-height bg-muted">
@@ -20,13 +21,21 @@
     </header>
     <div class="tab">
         <div class="tab-controls">
-            <span data-target="#search" class="tab-control ">Qidirish</span>
-            <span data-target="#tickets" class="tab-control active"> Chiptalarim </span>
+            <span data-target="#search" class="tab-control active">Qidirish</span>
+            <span data-target="#tickets" class="tab-control "> Chiptalarim </span>
         </div>
     </div>
     <div class="tab-content">
-        <div id="search" class=" content">
-            <div class="from search-btn">
+        <div id="search" class=" content active">
+            <div class="swapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8L7 4L11 8" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 4V13" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13 16L17 20L21 16" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 10V20" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="from search-btn" data-target="#help-from">
                 <div class="btn-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.639 10.2577L19.4687 8.96358C19.981 8.82629 20.5269 8.89816 20.9863 9.16338C21.4457 9.4286 21.7809 9.86543 21.9182 10.3778C22.0554 10.8902 21.9836 11.4361 21.7184 11.8954C21.4531 12.3548 21.0163 12.69 20.5039 12.8273L6.01505 16.7096L1.56436 11.6905L4.46214 10.914L6.91163 12.3282L9.8094 11.5518L6.06582 5.30793L8.9636 4.53147L14.639 10.2577Z" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -35,10 +44,10 @@
                 </div>
                 <div class="btn-inner">
                     <div class="label">Qayerdan</div>
-                    <div class="selected-value">Samarqand</div>
+                    <div class="selected-value"></div>
                 </div>
             </div>
-            <div class="to search-btn">
+            <div class="to search-btn" data-target="#help-from">
                 <div class="btn-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15.1567 11.8106L19.9863 13.1047C20.4987 13.242 20.9355 13.5772 21.2007 14.0365C21.4659 14.4959 21.5378 15.0418 21.4005 15.5542C21.2632 16.0665 20.928 16.5034 20.4687 16.7686C20.0093 17.0338 19.4634 17.1057 18.951 16.9684L4.46214 13.0861L3.11728 6.51408L6.01506 7.29053L7.42927 9.74002L10.3271 10.5165L10.2069 3.23736L13.1047 4.01382L15.1567 11.8106Z" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -47,11 +56,11 @@
                 </div>
                 <div class="btn-inner">
                     <div class="label">Qayerga</div>
-                    <div class="selected-value">Toshkent</div>
+                    <div class="selected-value"></div>
                 </div>
             </div>
             <div class="d-flex row">
-                <div class="from-date search-btn">
+                <div class="from-date search-btn" data-target="#from-date">
                     <div class="btn-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18 5H6C4.89543 5 4 5.89543 4 7V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V7C20 5.89543 19.1046 5 18 5Z" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -64,10 +73,10 @@
                     </div>
                     <div class="btn-inner">
                         <div class="label">Qachon</div>
-                        <div class="selected-value">24 Fev, Pay</div>
+                        <div class="selected-value"></div>
                     </div>
                 </div>
-                <div class="to-date search-btn">
+                <div class="to-date search-btn" data-target="#from-date">
                     <div class="btn-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18 5H6C4.89543 5 4 5.89543 4 7V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V7C20 5.89543 19.1046 5 18 5Z" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -80,11 +89,11 @@
                     </div>
                     <div class="btn-inner">
                         <div class="label">Qachongacha</div>
-                        <div class="selected-value">28 Fev, Jum</div>
+                        <div class="selected-value"></div>
                     </div>
                 </div>
             </div>
-            <div class="from search-btn">
+            <div class="from search-btn status" data-target="#status">
                 <div class="btn-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -93,13 +102,13 @@
                     </svg>
                 </div>
                 <div class="btn-inner">
-                    <div class="label">Holat</div>
-                    <div class="selected-value">1 ta yo‘lovchi, <span> ekonomika... </span></div>
+                    <div class="label">Sinf va yo‘lovchilar</div>
+                    <div class="selected-value"> <span> </span> <span class="p_class">  </span></div>
                 </div>
             </div>
-            <button class="search-btn btn-primary btn-block">Izlash</button>
+            <button class="btn btn-primary btn-block">Izlash</button>
         </div>
-        <div id="tickets" class="content active">
+        <div id="tickets" class="content ">
             <h1>Faol chiptalar</h1>
             <div class="ticket">
                 <div class="ticket-part-1">
@@ -357,7 +366,7 @@
         </div>
     </section>
 </section>
-<section class="help-window">
+<section class="help-window" id="help-from">
     <div class="overlay"></div>
     <div class="window-content">
         <div class="window-header">
@@ -385,21 +394,201 @@
                </span>
            </div>
            <ul class="results">
-               <li>Buxoro <span>O'zbekiston</span></li>
-               <li>Buxoro <span>O'zbekiston</span></li>
-               <li>Buxoro <span>O'zbekiston</span></li>
-               <li>Buxoro <span>O'zbekiston</span></li>
-               <li>Buxoro <span>O'zbekiston</span></li>
-               <li>Buxoro <span>O'zbekiston</span></li>
-               <li>Buxoro <span>O'zbekiston</span></li>
-               <li>Buxoro <span>O'zbekiston</span></li>
+               <li>
+                    <div>
+                        <span>Samarqand</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        SMRQ
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Buxoro</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        BKH
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Toshkent</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        TSHK
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Farg'ona</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        FRG
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Namangan</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        NMG
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Buxoro</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        BKH
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Buxoro</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        BKH
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Buxoro</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        BKH
+                    </div>
+                </li>
            </ul>
        </div>
         
 
     </div>
 </section>
+<section class="help-window" id="from-date">
+    <div class="overlay"></div>
+    <div class="window-content">
+        <div class="window-header">
+            <h2>Qachondan</h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+       </div>
+       <div class="window-inner">
+           <div class="calendar">
+               <div class="calendar-controls">
+                <select name="month" id="month" class="month">
+                    <option value="1">Yanvar</option>
+                    <option value="2">Fevral</option>
+                    <option value="3">Mart</option>
+                    <option value="4">Aprel</option>
+                    <option value="5">May</option>
+                    <option value="6">Iyun</option>
+                    <option value="7">Iyul</option>
+                    <option value="8">Avgust</option>
+                    <option value="9">Sentyabr</option>
+                    <option value="10">Oktyabr</option>
+                    <option value="11">Noyabr</option>
+                    <option value="12">Dekabr</option>
+                </select>
+                <select name="year" id="year" class="year">
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                </select>
+            </div>
+                <div class="weekdays">
+                    <div>YA</div>
+                    <div>DU</div>
+                    <div>SE</div>
+                    <div>CH</div>
+                    <div>PA</div>
+                    <div>JU</div>
+                    <div>SH</div>
+                </div>
+                <div class="days"></div>
+           </div>
+       </div>
+    </div>
+</section>
+<section class="help-window" id="status">
+    <div class="overlay"></div>
+    <div class="window-content">
+        <div class="window-header">
+            <h2>Sinf va yo‘lovchilar</h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+       </div>
+       <div class="window-inner">
+           <div class="classes">
+               <div class="btn"> Ekonom </div>
+               <div class="btn"> Bussines </div>
+           </div>
+           <div class="passengers">
+                <div class="passengers-type" id="kattalar">
+                    <div class="info">
+                        <span>Kattalar </span>
+                        <span>12 yoshdan kattalar</span>
+                    </div>
+                    <div class="counter">
+                        <button class="rm"> - </button>
+                                     <span> 0 </span>
+                        <button class="pl active"> + </button>
+                    </div>
+                </div>
+                <div class="passengers-type" id="bolalar">
+                    <div class="info">
+                        <span>Bolalar </span>
+                        <span>2 yoshdan 12 yoshgacha</span>
+                    </div>
+                    <div class="counter">
+                        <button class="rm"> - </button>
+                                     <span> 0 </span>
+                        <button class="pl active"> + </button>
+                    </div>
+                </div>
+                <div class="passengers-type" id="chaqaloqlar">
+                    <div class="info">
+                        <span>Chaqaloqlar </span>
+                        <span>2 yoshgacha, o‘rindiqsiz</span>
+                    </div>
+                    <div class="counter">
+                        <button class="rm"> - </button>
+                                     <span> 0 </span>
+                        <button class="pl active"> + </button>
+                    </div>
+                </div>
+           </div>
+       </div>
+    </div>
+</section>
+    <script src="./js/datepicker.js"></script>
     <script>
+        let called=false;
+        let p_class=""
+        let p_count={
+            "kattalar" :0,
+            "bolalar" :0,
+            "chaqaloqlar" :0,
+        }
+        function create_results(target){
+            if (!called){
+                document.querySelectorAll(".help-window.active .results li").forEach(function(item){
+                    console.log(document.querySelector(".search-btn.pressed"));
+                    item.addEventListener("click", function(event){
+                        document.querySelector(".search-btn.pressed .selected-value").innerText=event.target.querySelector("div:nth-child(1) span:nth-child(1)").innerText
+                    })
+                })
+                called=true;
+            }
+        }
+
         window.onload = function(){
             document.querySelectorAll(".tab-control").forEach(function(item){
                 item.addEventListener("click", function(event){
@@ -409,26 +598,77 @@
                     document.querySelector(item.getAttribute("data-target")).classList.add("active")
                 })
             })
-
-            document.querySelectorAll(".from.search-btn").forEach(function(item){
+            document.querySelectorAll(".search-btn").forEach(function(item){
                 item.addEventListener("click", function(event){
-                    document.querySelector(".help-window").classList.add("active");
+                    document.querySelector(item.getAttribute("data-target")).classList.add("active");
+                    if (item.getAttribute("data-target")=="#from-date"){
+                        create_picker(item);
+                    } else {
+                        create_results(item);
+                    }
+                    document.querySelector(".help-window.active .window-header h2").innerText=item.querySelector(".label").innerText;
+                    event.target.classList.add("pressed");
                 })
             })
-            document.querySelectorAll(".window-header svg")[0].addEventListener("click", function(event){
-                document.querySelector(".help-window").classList.remove("active");
-            })
-            document.querySelector("#search-input").addEventListener("keyup", function(event){
+            document.querySelectorAll(" .window-header svg").forEach(function(item){
+                item.addEventListener("click", function(event){
+                document.querySelector(".help-window.active").classList.remove("active");
+                document.querySelector(".search-btn.pressed").classList.remove("pressed")
+            })})
+            document.querySelectorAll("#search-input").forEach(function(item){
+                item.addEventListener("keyup", function(event){
                 if (event.target.value.length>0){
-                    document.querySelector(".input-clear").classList.add("show");
+                    document.querySelector(".active .input-clear").classList.add("show");
                 } else {
-                    document.querySelector(".input-clear").classList.remove("show");
+                    document.querySelector(".show.input-clear").classList.remove("show");
                 }
             })
-            document.querySelector(".input-clear").addEventListener("click", function(event){
-                document.querySelector("#search-input").value="";
-                document.querySelector(".input-clear").classList.remove("show");
-                document.querySelector("#search-input").focus()
+            })
+            document.querySelectorAll(".input-clear").forEach(function(item){
+                item.addEventListener("click", function(event){
+                    document.querySelector(".active #search-input").value="";
+                    document.querySelector(".show.input-clear").classList.remove("show");
+                    document.querySelector(".active #search-input").focus()
+                })
+            })
+            document.querySelectorAll(".overlay").forEach(function(item){
+                item.addEventListener("click", function(){
+                    document.querySelector(".help-window.active").classList.remove("active")
+                    document.querySelector(".search-btn.pressed").classList.remove("pressed")
+                })
+            })
+            document.querySelectorAll(".classes .btn").forEach(function(item){
+                item.addEventListener("click", function(event){
+                    document.querySelectorAll(".classes .btn-primary").forEach(function(item_inner){
+                        item_inner.classList.remove("btn-primary");
+                    })
+                    item.classList.add("btn-primary");
+                    p_class=item.innerText;
+                    document.querySelector(".status span:nth-child(2)").innerText=p_class;
+                })
+            })
+            document.querySelectorAll(".passengers-type .counter button").forEach(function(item){
+                item.addEventListener("click", function(event){
+                    const target=event.target.parentNode.parentNode;
+                    if (event.target.classList.contains("active")){
+                        if (event.target.classList.contains("rm")){
+                            target.querySelector(".counter span").innerText=target.querySelector(".counter span").innerText-1;
+                            if (target.querySelector(".counter span").innerText==0)
+                            target.querySelector(".rm").classList.remove("active")
+                        } else {
+                            target.querySelector(".counter span").innerText=1+parseInt(target.querySelector(".counter span").innerText);
+                            if (target.querySelector(".counter span").innerText==1)
+                            target.querySelector(".rm").classList.add("active")
+                        }
+                        p_count[target.id]=target.querySelector(".counter span").innerText;
+                        document.querySelector(".status span:nth-child(1)").innerText=parseInt(p_count.kattalar)+parseInt(p_count.bolalar)+parseInt(p_count.chaqaloqlar)+" ta yo'lovchi,";
+                    }
+                })
+            })
+            document.querySelector(".swapper").addEventListener("click", function(event){
+                const from_val=document.querySelector(".from.search-btn .selected-value").innerText;
+                document.querySelector(".from.search-btn .selected-value").innerText=document.querySelector(".to.search-btn .selected-value").innerText;
+                document.querySelector(".to.search-btn .selected-value").innerText=from_val;
             })
         }
     </script>

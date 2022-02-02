@@ -417,6 +417,7 @@ a{
 
 #search{
     padding: 12px;
+    position: relative;
     background-color: #fff;
     width: calc(100% - 40px);
 }
@@ -448,6 +449,19 @@ a{
     flex-direction: row;
     margin-top: 6px;
     margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.window-header svg{
+    cursor: pointer;
+}
+
+.input-clear{
+    cursor: pointer;
+}
+
+.tab-controls{
+    cursor: pointer;
 }
 
 .btn-inner{
@@ -466,7 +480,7 @@ a{
     letter-spacing: 0.4px;
 }
 
-.selected-value span{
+.selected-value .p_class{
     color: #C0C0C0;
     font-weight: 400;
 }
@@ -694,18 +708,31 @@ a{
 }
 
 .results li{
+    cursor: pointer;
     list-style-type: none;
     padding: 8px;
     font-size: 14px;
     font-weight: 500;
     border-bottom: 1px solid #E2E2E2;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.results li div{
+    display: flex;
     flex-direction: column;
 }
 
-.results li span{
+.results li div span:nth-child(2){
     font-size: 10px;
     font-weight: 400;
+}
+
+.results li div span:nth-child(1){
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .input-clear{
@@ -717,4 +744,104 @@ a{
     position: absolute;
     top: 17px;
     right: 12px;
+}
+
+.calendar{
+    width: 100%;
+    height: 350px;
+    padding: 24px 40px;
+}
+
+
+.classes{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+  
+.classes .btn{
+    display: inline-block;
+    width: 100px;
+    margin-right: 6px;
+    text-align: center;
+}
+
+.passengers{
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.passengers-type{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.passengers-type .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    letter-spacing: 1px;
+}
+
+.passengers-type .info span:nth-child(1){
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.passengers-type .info span:nth-child(2){
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.passengers-type .counter{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.passengers-type .counter button{
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #109BFF;
+    color: #109BFF;
+    margin: 0 6px;
+    cursor: not-allowed;
+}
+
+.passengers-type .counter button.active{
+    background-color: #109BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+.passengers-type .counter span{
+    min-width: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.swapper{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #bcbcbc;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 30px;
+    top: 50px;
 }
