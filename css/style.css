@@ -921,6 +921,7 @@ section.bg-white .go-back svg path{
     border-radius: 18px;
     font-size: 12px;
     text-transform: unset;
+    margin-right: 10px;
 }
 
 .ticket-types .badge.active{
@@ -938,4 +939,33 @@ section.bg-white .go-back svg path{
     background-color: #fff;
     padding: 24px 16px;
     border-radius: 5px;
+}
+
+.ticket-head{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.airport{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.airport img{
+    margin-right: 5px;
+}
+
+.bonus span{
+    margin-right: 3px;
+    color: #12951F;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.bonus{
+    display: flex;
+    align-items: center;
 }
