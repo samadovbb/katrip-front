@@ -582,7 +582,9 @@
                 document.querySelectorAll(".help-window.active .results li").forEach(function(item){
                     console.log(document.querySelector(".search-btn.pressed"));
                     item.addEventListener("click", function(event){
-                        document.querySelector(".search-btn.pressed .selected-value").innerText=event.target.querySelector("div:nth-child(1) span:nth-child(1)").innerText
+                        document.querySelector(".search-btn.pressed .selected-value").innerText=event.target.querySelector("div:nth-child(1) span:nth-child(1)").innerText;
+                        document.querySelector(".help-window.active").classList.remove("active");
+                        document.querySelector(".search-btn.pressed").classList.remove("pressed")
                     })
                 })
                 called=true;
