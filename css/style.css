@@ -8,7 +8,6 @@
 body{
     max-width: 420px;
     font-family: "Poppins", sans-serif;
-    border: 1px solid rgb(231, 231, 231);
     min-height: 100vh;
     font-size: 12px;
     position: relative;
@@ -555,6 +554,7 @@ a{
     font-size: 8px;
     text-transform: uppercase;
     margin-top: 4px;
+    cursor: pointer;
 }
 
 .ticket-part-1 div.ticket-to{
@@ -1186,4 +1186,94 @@ section.bg-white .go-back svg path{
 .help-window .badge.active{
     color: #000000;
     border: 1.5px solid #109BFF;
+}
+
+.go-time{
+    background: #F3F3F380;
+    margin: 0 -20px;
+    padding: 20px;
+}
+
+.go-inner{
+    display: flex;
+    flex-direction: column;
+}
+
+.go-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.go-info h3{
+    color: #000;
+}
+
+.go-info span{
+    color: #A4A4A4;
+    font-size: 14px;
+}
+
+.go-range{
+    padding: 20px 0;
+}
+
+.filter-airports{
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#tungi{
+    position: absolute;
+    left: -500px;
+}
+
+.switch{
+    width: 32px;
+    height: 18px;
+    background-color: #0000004D;
+    
+    position: relative;
+    transition: all 0.2s ease;
+    position: absolute;
+    border-radius: 9px;
+}
+
+.row{
+    display: flex;
+}
+
+.between{
+    justify-content: space-between;
+}
+
+label.check{
+    width: 50px;
+    height: 100%;
+    position: relative;
+}
+
+.switch::after{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    content: " ";
+    position: absolute;
+    border: 1px solid #0000004D;
+    top: -2px;
+    left: -2px;
+    transition: all 0.2s ease;
+}
+
+#tungi:checked ~ .switch{
+    background-color: #109BFF;
+}
+
+#tungi:checked ~ .switch::after{
+    border: 1px solid #109BFF;
+    left: 12px;
 }

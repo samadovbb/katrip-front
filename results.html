@@ -322,13 +322,44 @@
                     <span class="badge">1 dan kam</span>
                     <span class="badge">Barcha reyslar</span>
                 </div>
-                <h2>Transplantatsiya</h2>
+                <h2>Transfer muddati</h2>
                 <div class="transfers">
                     <span class="badge">1 dan kam</span>
                     <span class="badge">Barcha reyslar</span>
                     <span class="badge">1 dan kam</span>
                     <span class="badge">Barcha reyslar</span>
                 </div>
+                <div class="row between" style="margin: 20px 0px;">
+                    <h2>Tungi transferlarsiz</h2>
+                    <label for="tungi" class="check"> <input type="checkbox" name="tungi" id="tungi"> <span class="switch"></span> </label>
+                </div>
+                <div class="go-time">
+                    <h2>Transfer jo‘nash vaqtlari</h2>
+                    <div class="go-inner">
+                        <div class="go-info">
+                            <h3>Samarqanddan jo'nash vaqti</h3>
+                            <span>00:00 - 23:59</span>
+                        </div>
+                        <div class="go-range">
+
+                        </div>
+                        <div class="go-info">
+                            <h3>Toshkentga tushish vaqti</h3>
+                            <span>00:00 - 23:59</span>
+                        </div>
+                        <div class="go-range">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-airports">
+                    <h2>Aviakompaniyalar</h2>
+                    <span><svg width="28" height="28" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5 21L17.5 14L10.5 7" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+                <button class="btn btn-primary btn-block">5ta bilet topildi</button>
             </div>
         </div>
     </section>
@@ -375,7 +406,10 @@
                     item.classList.add("active")
                 })
             })
-
+            document.querySelector(".filter").addEventListener("click", function(event){
+                event.target.classList.add("pressed");
+                document.querySelector("#filter").classList.add("active")
+            })
         }
     </script>
 </body>
