@@ -18,6 +18,7 @@ body{
 .full-height{
     overflow-y: auto;
     height: 100vh;
+    padding-bottom: 60px;
 }
 
 header.page{
@@ -513,10 +514,6 @@ a{
     border-radius: 5px;
 }
 
-#tickets{
-    
-}
-
 .ticket{
     position: relative;
     padding-bottom: 16px;
@@ -959,7 +956,7 @@ section.bg-white .go-back svg path{
 }
 
 .bonus span{
-    margin-right: 3px;
+    margin: 0 3px;
     color: #12951F;
     font-weight: 500;
     font-size: 12px;
@@ -968,4 +965,225 @@ section.bg-white .go-back svg path{
 .bonus{
     display: flex;
     align-items: center;
+}
+
+.ticket-info{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 10px 0px;
+}
+
+.ticket-info .times{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.ticket-info .locations{
+    font-size: 12px;
+    font-weight: 500;
+    color: #a4a4a4;
+}
+
+.fly-about{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.fly-about .fly-time{
+    font-size: 12px;
+    font-weight: 500;
+    text-align: end;
+}
+
+.fly-about .fly-type{
+    font-size: 10px;
+    font-weight: 500;
+    color: #a4a4a4;
+}
+
+.pricing{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+
+.i-dont{
+    margin-top: 3px;
+    display: inline-block;
+    background-color: #CCEAFF;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.i-dont span{
+    font-size: 12px;
+    color: #a4a4a4c7;
+}
+
+.filter.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 78px);
+    box-shadow: 0px 4px 8px rgba(16, 155, 255, 0.3);
+    border-radius: 25px;
+    padding: 8px 40px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.ticket-about{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-about .regions{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.ticket-date{
+    color: #00000080;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.ticket-content{
+    margin-top: 15px;
+}
+
+.airport-info{
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.help-window .airport-logo{
+    width: 36px;
+    height: 36px;
+    margin-right: 15px;
+}
+
+.air-info .air-name{
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.air-info .air-long{
+    font-weight: 400;
+    font-size: 10px;
+    color: #a4a4a4;
+    margin-top: 3px;
+}
+
+.fly-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 0px;
+}
+
+.left-img{
+    margin-right: 28px;
+}
+
+.parvoz{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.parvoz-inner{
+    display: flex;
+    justify-content: space-between;
+}
+
+.p-vaqt{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 6px 0px
+}
+
+.parvoz-time{
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.3px;
+    color: #000000;
+}
+
+.parvoz-date{
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    color: #00000080;
+    margin-top: 4px;
+}
+
+.p-region{
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    color: #000000;
+}
+
+.p-airport{
+    color: #00000080;
+    font-size: 10px;
+    line-height: 18px;
+    letter-spacing: 0.3px;
+    margin-top: 4px;
+}
+
+.continue{
+    padding: 16px;
+}
+
+.filter-window{
+    margin: 24px 0px;
+    padding: 12px 0px;
+}
+
+.filter-window h2{
+    margin-bottom: 12px;
+}
+
+.transfer-count{
+    font-size: 12px;
+    line-height: 18px;
+    color: #676767;
+}
+
+.transfers{
+    padding: 12px 0;
+}
+
+.help-window .badge{
+    border: 1px solid #0000004D;
+    color: #0000004D;
+    font-size: 12px;
+    background-color: transparent;
+    border-radius: 18px;
+    display: inline-block;
+    margin-right: 4px;
+    margin-top: 8px;
+    white-space: nowrap;
+}
+
+.help-window .badge.active{
+    color: #000000;
+    border: 1.5px solid #109BFF;
 }
