@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qidirish</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/datepicker.css">
+</head>
+<body >
+<section class="full-height bg-muted">
+    <header class="page">
+        <span>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.5 7L10.5 14L17.5 21" stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span>
+        <h2>Temir yo'l</h2>
+        <span>&nbsp;</span>
+    </header>
+    <div class="tab">
+        <div class="tab-controls">
+            <span data-target="#search" class="tab-control active">Qidirish</span>
+            <span data-target="#tickets" class="tab-control "> Chiptalarim </span>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div id="search" class=" content active">
+            <div class="swapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8L7 4L11 8" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 4V13" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13 16L17 20L21 16" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 10V20" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="from search-btn" data-target="#help-from">
+                <div class="btn-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 13C22 9.13 18.63 6 12 6H4" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4 15H20C20.5304 15 21.0391 14.7893 21.4142 14.4142C21.7893 14.0391 22 13.5304 22 13" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4 6V11H21.5" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4 10V14" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 11V6" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 11V6.5" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1 19L22 19" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1 20L1 17" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                                              
+                </div>
+                <div class="btn-inner">
+                    <div class="label">Qayerdan</div>
+                    <div class="selected-value"></div>
+                </div>
+            </div>
+            <div class="to search-btn" data-target="#help-from">
+                <div class="btn-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 13C20 9.13 16.63 6 10 6H2" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 15H18C18.5304 15 19.0391 14.7893 19.4142 14.4142C19.7893 14.0391 20 13.5304 20 13" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 6V11H19.5" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 10V14" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 11V6" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 11V6.5" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23 19L1 19" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23 20L23 17" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>                                            
+                </div>
+                <div class="btn-inner">
+                    <div class="label">Qayerga</div>
+                    <div class="selected-value"></div>
+                </div>
+            </div>
+            <div class="d-flex row">
+                <div class="from-date search-btn" data-target="#from-date">
+                    <div class="btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 5H6C4.89543 5 4 5.89543 4 7V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V7C20 5.89543 19.1046 5 18 5Z" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 3V7" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 3V7" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4 11H20" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11 15H12" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 15V18" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="btn-inner">
+                        <div class="label">Qachon</div>
+                        <div class="selected-value"></div>
+                    </div>
+                </div>
+                <div class="to-date search-btn" data-target="#from-date">
+                    <div class="btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 5H6C4.89543 5 4 5.89543 4 7V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V7C20 5.89543 19.1046 5 18 5Z" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 3V7" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 3V7" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4 11H20" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11 15H12" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 15V18" stroke="#109BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="btn-inner">
+                        <div class="label">Qachongacha</div>
+                        <div class="selected-value"></div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block">Izlash</button>
+        </div>
+        <div id="tickets" class="content ">
+            <h1>Faol chiptalar</h1>
+            <div class="ticket">
+                <div class="ticket-part-1">
+                    <div class="ticket-from">
+                        <span class="clock-from">12:00</span>
+                        <span class="region-from">Buxoro</span>
+                        <span class="badge region-shortname-from">bkh</span>
+                    </div>
+                    <div>
+                        <svg width="91" height="12" viewBox="0 0 91 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="3.5" cy="5.5" r="2.5" stroke="#109BFF" stroke-width="2"/>
+                            <circle cx="87.5" cy="5.5" r="2.5" stroke="#109BFF" stroke-width="2"/>
+                            <line opacity="0.4" x1="5.5" y1="5.5" x2="84.5" y2="5.50001" stroke="#109BFF" stroke-linecap="round" stroke-dasharray="2 4"/>
+                            <path d="M47 5H49C49.2652 5 49.5196 5.10536 49.7071 5.29289C49.8946 5.48043 50 5.73478 50 6C50 6.26522 49.8946 6.51957 49.7071 6.70711C49.5196 6.89464 49.2652 7 49 7H47L45 10.5H43.5L44.5 7H42.5L41.5 8H40L41 6L40 4H41.5L42.5 5H44.5L43.5 1.5H45L47 5Z" fill="#109BFF"/>
+                        </svg>
+                        <span class="flying-time">
+                            4 soat, 20 daq.
+                        </span>
+                    </div>
+                    <div class="ticket-to">
+                        <span class="clock-to">12:00</span>
+                        <span class="region-to">Toshkent</span>
+                        <span class="badge region-shortname-to">tash</span>
+                    </div>
+                </div>
+                <div class="ticket-part-2">
+                    <div>
+                        <span class="name">Sana:</span>
+                        <span class="value">27 yan, 2022</span>
+                    </div>
+                    <div>
+                        <span class="name">Yo'lovchi:</span>
+                        <span class="value">2 ta</span>
+                    </div>
+                    <div>
+                        <span class="name">Holati:</span>
+                        <span class="value">Ekonom</span>
+                    </div>
+                </div>
+                <div class="info">
+                    <span>#4325433</span>
+                    <span>280 000 sum</span>
+                </div>
+            </div>
+            <div class="ticket">
+                <div class="ticket-part-1">
+                    <div class="ticket-from">
+                        <span class="clock-from">12:00</span>
+                        <span class="region-from">Buxoro</span>
+                        <span class="badge region-shortname-from">bkh</span>
+                    </div>
+                    <div>
+                        <svg width="91" height="12" viewBox="0 0 91 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="3.5" cy="5.5" r="2.5" stroke="#109BFF" stroke-width="2"/>
+                            <circle cx="87.5" cy="5.5" r="2.5" stroke="#109BFF" stroke-width="2"/>
+                            <line opacity="0.4" x1="5.5" y1="5.5" x2="84.5" y2="5.50001" stroke="#109BFF" stroke-linecap="round" stroke-dasharray="2 4"/>
+                            <path d="M47 5H49C49.2652 5 49.5196 5.10536 49.7071 5.29289C49.8946 5.48043 50 5.73478 50 6C50 6.26522 49.8946 6.51957 49.7071 6.70711C49.5196 6.89464 49.2652 7 49 7H47L45 10.5H43.5L44.5 7H42.5L41.5 8H40L41 6L40 4H41.5L42.5 5H44.5L43.5 1.5H45L47 5Z" fill="#109BFF"/>
+                        </svg>
+                        <span class="flying-time">
+                            4 soat, 20 daq.
+                        </span>
+                    </div>
+                    <div class="ticket-to">
+                        <span class="clock-to">12:00</span>
+                        <span class="region-to">Toshkent</span>
+                        <span class="badge region-shortname-to">tash</span>
+                    </div>
+                </div>
+                <div class="ticket-part-2">
+                    <div>
+                        <span class="name">Sana:</span>
+                        <span class="value">27 yan, 2022</span>
+                    </div>
+                    <div>
+                        <span class="name">Yo'lovchi:</span>
+                        <span class="value">2 ta</span>
+                    </div>
+                    <div>
+                        <span class="name">Holati:</span>
+                        <span class="value">Ekonom</span>
+                    </div>
+                </div>
+                <div class="info">
+                    <span>#4325433</span>
+                    <span>280 000 sum</span>
+                </div>
+            </div>
+            <div class="ticket">
+                <div class="ticket-part-1">
+                    <div class="ticket-from">
+                        <span class="clock-from">12:00</span>
+                        <span class="region-from">Buxoro</span>
+                        <span class="badge region-shortname-from">bkh</span>
+                    </div>
+                    <div>
+                        <svg width="91" height="12" viewBox="0 0 91 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="3.5" cy="5.5" r="2.5" stroke="#109BFF" stroke-width="2"/>
+                            <circle cx="87.5" cy="5.5" r="2.5" stroke="#109BFF" stroke-width="2"/>
+                            <line opacity="0.4" x1="5.5" y1="5.5" x2="84.5" y2="5.50001" stroke="#109BFF" stroke-linecap="round" stroke-dasharray="2 4"/>
+                            <path d="M47 5H49C49.2652 5 49.5196 5.10536 49.7071 5.29289C49.8946 5.48043 50 5.73478 50 6C50 6.26522 49.8946 6.51957 49.7071 6.70711C49.5196 6.89464 49.2652 7 49 7H47L45 10.5H43.5L44.5 7H42.5L41.5 8H40L41 6L40 4H41.5L42.5 5H44.5L43.5 1.5H45L47 5Z" fill="#109BFF"/>
+                        </svg>
+                        <span class="flying-time">
+                            4 soat, 20 daq.
+                        </span>
+                    </div>
+                    <div class="ticket-to">
+                        <span class="clock-to">12:00</span>
+                        <span class="region-to">Toshkent</span>
+                        <span class="badge region-shortname-to">tash</span>
+                    </div>
+                </div>
+                <div class="ticket-part-2">
+                    <div>
+                        <span class="name">Sana:</span>
+                        <span class="value">27 yan, 2022</span>
+                    </div>
+                    <div>
+                        <span class="name">Yo'lovchi:</span>
+                        <span class="value">2 ta</span>
+                    </div>
+                    <div>
+                        <span class="name">Holati:</span>
+                        <span class="value">Ekonom</span>
+                    </div>
+                </div>
+                <div class="info">
+                    <span>#4325433</span>
+                    <span>280 000 sum</span>
+                </div>
+            </div>
+            <div class="ticket">
+                <div class="ticket-part-1">
+                    <div class="ticket-from">
+                        <span class="clock-from">12:00</span>
+                        <span class="region-from">Buxoro</span>
+                        <span class="badge region-shortname-from">bkh</span>
+                    </div>
+                    <div>
+                        <svg width="91" height="12" viewBox="0 0 91 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="3.5" cy="5.5" r="2.5" stroke="#109BFF" stroke-width="2"/>
+                            <circle cx="87.5" cy="5.5" r="2.5" stroke="#109BFF" stroke-width="2"/>
+                            <line opacity="0.4" x1="5.5" y1="5.5" x2="84.5" y2="5.50001" stroke="#109BFF" stroke-linecap="round" stroke-dasharray="2 4"/>
+                            <path d="M47 5H49C49.2652 5 49.5196 5.10536 49.7071 5.29289C49.8946 5.48043 50 5.73478 50 6C50 6.26522 49.8946 6.51957 49.7071 6.70711C49.5196 6.89464 49.2652 7 49 7H47L45 10.5H43.5L44.5 7H42.5L41.5 8H40L41 6L40 4H41.5L42.5 5H44.5L43.5 1.5H45L47 5Z" fill="#109BFF"/>
+                        </svg>
+                        <span class="flying-time">
+                            4 soat, 20 daq.
+                        </span>
+                    </div>
+                    <div class="ticket-to">
+                        <span class="clock-to">12:00</span>
+                        <span class="region-to">Toshkent</span>
+                        <span class="badge region-shortname-to">tash</span>
+                    </div>
+                </div>
+                <div class="ticket-part-2">
+                    <div>
+                        <span class="name">Sana:</span>
+                        <span class="value">27 yan, 2022</span>
+                    </div>
+                    <div>
+                        <span class="name">Yo'lovchi:</span>
+                        <span class="value">2 ta</span>
+                    </div>
+                    <div>
+                        <span class="name">Holati:</span>
+                        <span class="value">Ekonom</span>
+                    </div>
+                </div>
+                <div class="info">
+                    <span>#4325433</span>
+                    <span>280 000 sum</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lifehacks active m-20">
+        <div class="drop-controls">
+            <h3>Takliflar va layfhaklar</h3>
+            <i> 
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 9L12 15L18 9" stroke="#545454" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </i>
+        </div>
+        <div class="lifehacks-list">
+            <div class="lifehack-container">
+                <div class="lifehack"></div>
+                <div class="lifehack"></div>
+                <div class="lifehack"></div>
+                <div class="lifehack"></div>
+                <div class="lifehack"></div>
+                <div class="lifehack"></div>
+            </div>
+        </div>
+    </div>
+    <section class="footer-nav">
+        <div class="nav-item">
+            <div class="nav-icon">
+                <svg width="20" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.97873 19H6.71567C7.15358 19 7.26306 18.2116 7.26306 17.8174V11.9044H12.7369V17.8174C12.7369 18.7634 13.1019 19 13.2843 19H16.5687C17.0066 19 17.116 18.2116 17.116 17.8174V9.53926H18.7582C19.1961 9.53926 18.9407 9.14506 18.7582 8.94796C16.2037 6.5828 10.9853 1.73422 10.5474 1.26119C10.1095 0.788152 9.63508 1.06409 9.45261 1.26119C6.89814 3.62636 1.6797 8.47497 1.24179 8.94801C0.803883 9.42104 1.05933 9.5393 1.24179 9.5393H2.88396V17.8174C2.88396 18.7635 3.61381 19 3.97873 19Z" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="nav-text">
+                Asosiy
+            </div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 16L10 10L16 8L14 14L8 16Z" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    
+            </div>
+            <div class="nav-text">
+                Explore
+            </div>
+        </div>
+        <div class="nav-item ">
+            <div class="nav-icon">
+                <svg width="12" height="24" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 1H9C9.53043 1 10.0391 1.21071 10.4142 1.58579C10.7893 1.96086 11 2.46957 11 3V17L6 14L1 17V3C1 2.46957 1.21071 1.96086 1.58579 1.58579C1.96086 1.21071 2.46957 1 3 1Z" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="nav-text">
+                Saved
+            </div>
+        </div>
+        <div class="nav-item ">
+            <div class="nav-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 20.0001L4.3 16.1001C3.17644 14.4384 2.76999 12.4705 3.15622 10.5624C3.54244 8.65427 4.69506 6.93575 6.39977 5.72635C8.10447 4.51696 10.2453 3.89898 12.4241 3.98732C14.6029 4.07566 16.6715 4.86431 18.2453 6.20664C19.819 7.54896 20.7909 9.35362 20.9801 11.2851C21.1693 13.2165 20.563 15.1433 19.2739 16.7072C17.9848 18.2711 16.1007 19.3657 13.9718 19.7874C11.8429 20.2092 9.6142 19.9294 7.7 19.0001L3 20.0001" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 12V12.01" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 12V12.01" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 12V12.01" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                    
+            </div>
+            <div class="nav-text">
+                Yordam
+            </div>
+        </div>
+        <div class="nav-item active">
+            <div class="nav-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 4H5C4.44772 4 4 4.44772 4 5V9C4 9.55228 4.44772 10 5 10H9C9.55228 10 10 9.55228 10 9V5C10 4.44772 9.55228 4 9 4Z" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M19 4H15C14.4477 4 14 4.44772 14 5V9C14 9.55228 14.4477 10 15 10H19C19.5523 10 20 9.55228 20 9V5C20 4.44772 19.5523 4 19 4Z" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 14H5C4.44772 14 4 14.4477 4 15V19C4 19.5523 4.44772 20 5 20H9C9.55228 20 10 19.5523 10 19V15C10 14.4477 9.55228 14 9 14Z" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M19 14H15C14.4477 14 14 14.4477 14 15V19C14 19.5523 14.4477 20 15 20H19C19.5523 20 20 19.5523 20 19V15C20 14.4477 19.5523 14 19 14Z" stroke="#B7BDBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg> 
+            </div>
+            <div class="nav-text">
+                More
+            </div>
+        </div>
+    </section>
+</section>
+<section class="help-window" id="help-from">
+    <div class="overlay"></div>
+    <div class="window-content">
+        <div class="window-header">
+            <h2>Qayerdan</h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+       </div>
+       <div class="window-inner">
+           <div class="search-group">
+               <input type="text" class="form-control" id="search-input" placeholder="Shahar yoki aeroport">
+               <span class="search-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.5">
+                        <path d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z" stroke="#929292" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L15 15" stroke="#929292" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+               </span>
+               <span class="input-clear">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM11.7303 4.26967C12.0232 4.56256 12.0232 5.03744 11.7303 5.33033L9.06066 8L11.7303 10.6697C12.0232 10.9626 12.0232 11.4374 11.7303 11.7303C11.4374 12.0232 10.9626 12.0232 10.6697 11.7303L8 9.06066L5.33033 11.7303C5.03744 12.0232 4.56256 12.0232 4.26967 11.7303C3.97678 11.4374 3.97678 10.9626 4.26967 10.6697L6.93934 8L4.26967 5.33033C3.97678 5.03744 3.97678 4.56256 4.26967 4.26967C4.56256 3.97678 5.03744 3.97678 5.33033 4.26967L8 6.93934L10.6697 4.26967C10.9626 3.97678 11.4374 3.97678 11.7303 4.26967Z" fill="black"/>
+                </svg>                    
+               </span>
+           </div>
+           <ul class="results">
+               <li>
+                    <div>
+                        <span>Samarqand</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        SMRQ
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Buxoro</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        BKH
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Toshkent</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        TSHK
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Farg'ona</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        FRG
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Namangan</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        NMG
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Buxoro</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        BKH
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Buxoro</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        BKH
+                    </div>
+                </li>
+               <li>
+                    <div>
+                        <span>Buxoro</span><span>O'zbekiston</span>
+                    </div>
+                    <div class="short">
+                        BKH
+                    </div>
+                </li>
+           </ul>
+       </div>
+        
+
+    </div>
+</section>
+<section class="help-window" id="from-date">
+    <div class="overlay"></div>
+    <div class="window-content">
+        <div class="window-header">
+            <h2>Qachondan</h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+       </div>
+       <div class="window-inner">
+           <div class="calendar">
+               <div class="calendar-controls">
+                <select name="month" id="month" class="month">
+                    <option value="1">Yanvar</option>
+                    <option value="2">Fevral</option>
+                    <option value="3">Mart</option>
+                    <option value="4">Aprel</option>
+                    <option value="5">May</option>
+                    <option value="6">Iyun</option>
+                    <option value="7">Iyul</option>
+                    <option value="8">Avgust</option>
+                    <option value="9">Sentyabr</option>
+                    <option value="10">Oktyabr</option>
+                    <option value="11">Noyabr</option>
+                    <option value="12">Dekabr</option>
+                </select>
+                <select name="year" id="year" class="year">
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                </select>
+            </div>
+                <div class="weekdays">
+                    <div>YA</div>
+                    <div>DU</div>
+                    <div>SE</div>
+                    <div>CH</div>
+                    <div>PA</div>
+                    <div>JU</div>
+                    <div>SH</div>
+                </div>
+                <div class="days"></div>
+           </div>
+       </div>
+    </div>
+</section>
+    <script src="./js/datepicker.js"></script>
+    <script>
+        let called=false;
+        function create_results(target){
+            if (!called){
+                document.querySelectorAll(".help-window.active .results li").forEach(function(item){
+                    console.log(document.querySelector(".search-btn.pressed"));
+                    item.addEventListener("click", function(event){
+                        document.querySelector(".search-btn.pressed .selected-value").innerText=event.target.querySelector("div:nth-child(1) span:nth-child(1)").innerText;
+                        document.querySelector(".help-window.active").classList.remove("active");
+                        document.querySelector(".search-btn.pressed").classList.remove("pressed")
+                    })
+                })
+                called=true;
+            }
+        }
+
+        window.onload = function(){
+            document.querySelectorAll(".tab-control").forEach(function(item){
+                item.addEventListener("click", function(event){
+                    document.querySelector(".content.active").classList.remove("active");
+                    document.querySelector(".tab-control.active").classList.remove("active");
+                    item.classList.add("active");
+                    document.querySelector(item.getAttribute("data-target")).classList.add("active")
+                })
+            })
+            document.querySelectorAll(".search-btn").forEach(function(item){
+                item.addEventListener("click", function(event){
+                    document.querySelector(item.getAttribute("data-target")).classList.add("active");
+                    if (item.getAttribute("data-target")=="#from-date"){
+                        create_picker(item);
+                    } else {
+                        create_results(item);
+                    }
+                    document.querySelector(".help-window.active .window-header h2").innerText=item.querySelector(".label").innerText;
+                    event.target.classList.add("pressed");
+                })
+            })
+            document.querySelectorAll(" .window-header svg").forEach(function(item){
+                item.addEventListener("click", function(event){
+                document.querySelector(".help-window.active").classList.remove("active");
+                document.querySelector(".search-btn.pressed").classList.remove("pressed")
+            })})
+            document.querySelectorAll("#search-input").forEach(function(item){
+                item.addEventListener("keyup", function(event){
+                if (event.target.value.length>0){
+                    document.querySelector(".active .input-clear").classList.add("show");
+                } else {
+                    document.querySelector(".show.input-clear").classList.remove("show");
+                }
+            })
+            })
+            document.querySelectorAll(".input-clear").forEach(function(item){
+                item.addEventListener("click", function(event){
+                    document.querySelector(".active #search-input").value="";
+                    document.querySelector(".show.input-clear").classList.remove("show");
+                    document.querySelector(".active #search-input").focus()
+                })
+            })
+            document.querySelectorAll(".overlay").forEach(function(item){
+                item.addEventListener("click", function(){
+                    document.querySelector(".help-window.active").classList.remove("active")
+                    document.querySelector(".search-btn.pressed").classList.remove("pressed")
+                })
+            })
+            document.querySelectorAll(".classes .btn").forEach(function(item){
+                item.addEventListener("click", function(event){
+                    document.querySelectorAll(".classes .btn-primary").forEach(function(item_inner){
+                        item_inner.classList.remove("btn-primary");
+                    })
+                    item.classList.add("btn-primary");
+                    p_class=item.innerText;
+                    document.querySelector(".status span:nth-child(2)").innerText=p_class;
+                })
+            })
+            document.querySelector(".swapper").addEventListener("click", function(event){
+                const from_val=document.querySelector(".from.search-btn .selected-value").innerText;
+                document.querySelector(".from.search-btn .selected-value").innerText=document.querySelector(".to.search-btn .selected-value").innerText;
+                document.querySelector(".to.search-btn .selected-value").innerText=from_val;
+            })
+        }
+    </script>
+</body>
+</html>

@@ -302,7 +302,7 @@
             </div>
         </div>
     </section>
-    <section class="help-window active" id="filter">
+    <section class="help-window" id="filter">
         <div class="overlay"></div>
         <div class="window-content">
             <div class="window-header">
@@ -352,7 +352,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="filter-airports">
+                <div class="filter-airports" data-target="#avia-companies">
                     <h2>Aviakompaniyalar</h2>
                     <span><svg width="28" height="28" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.5 21L17.5 14L10.5 7" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -360,6 +360,73 @@
                     </span>
                 </div>
                 <button class="btn btn-primary btn-block">5ta bilet topildi</button>
+            </div>
+        </div>
+    </section>
+    <section class="help-window" id="avia-companies">
+        <div class="overlay" data-target="#filter"></div>
+        <div class="window-content">
+            <div class="window-header">
+                <h2>Aviakompaniyalar</h2>
+                <span style="display: flex; align-items: center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-target="#filter">
+                    <path d="M18 6L6 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </span>
+            </div>
+            <div class="window-inner">
+                <div class="search-group">
+                    <input type="text" class="form-control" id="search-input" placeholder="Shahar yoki aeroport">
+                    <span class="search-icon">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <g opacity="0.5">
+                             <path d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z" stroke="#929292" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                             <path d="M21 21L15 15" stroke="#929292" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                             </g>
+                         </svg>
+                    </span>
+                    <span class="input-clear">
+                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM11.7303 4.26967C12.0232 4.56256 12.0232 5.03744 11.7303 5.33033L9.06066 8L11.7303 10.6697C12.0232 10.9626 12.0232 11.4374 11.7303 11.7303C11.4374 12.0232 10.9626 12.0232 10.6697 11.7303L8 9.06066L5.33033 11.7303C5.03744 12.0232 4.56256 12.0232 4.26967 11.7303C3.97678 11.4374 3.97678 10.9626 4.26967 10.6697L6.93934 8L4.26967 5.33033C3.97678 5.03744 3.97678 4.56256 4.26967 4.26967C4.56256 3.97678 5.03744 3.97678 5.33033 4.26967L8 6.93934L10.6697 4.26967C10.9626 3.97678 11.4374 3.97678 11.7303 4.26967Z" fill="black"/>
+                     </svg>                    
+                    </span>
+                </div>
+                <ul class="results">
+                    <li>
+                         <label for="UzAir">
+                             <div class="air">
+                                 <img src="./img/airport.svg" alt="UzAir">
+                                 <span>
+                                    Uzbekistan Airways
+                                 </span>
+                             </div>
+                             <input type="checkbox" name="UzAir" id="UzAir">
+                         </label>
+                     </li>
+                     <li>
+                        <label for="UzAir1">
+                            <div class="air">
+                                <img src="./img/airport.svg" alt="UzAir">
+                                <span>
+                                   Uzbekistan Airways
+                                </span>
+                            </div>
+                            <input type="checkbox" name="UzAir1" id="UzAir1">
+                        </label>
+                    </li>
+                    <li>
+                        <label for="UzAir2">
+                            <div class="air">
+                                <img src="./img/airport.svg" alt="UzAir">
+                                <span>
+                                   Uzbekistan Airways
+                                </span>
+                            </div>
+                            <input type="checkbox" name="UzAir2" id="UzAir2">
+                        </label>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -381,15 +448,17 @@
                     item.classList.add("active")
                 })
             })
-            document.querySelectorAll(" .window-header svg").forEach(function(item){
+            document.querySelectorAll(".window-header svg").forEach(function(item){
                 item.addEventListener("click", function(event){
-                document.querySelector(".help-window.active").classList.remove("active");
+                    console.log(item.parentElement.parentElement.parentElement.parentElement);
+                    item.parentElement.parentElement.parentElement.parentElement.classList.remove("active")
+                    document.querySelector(".pressed").classList.remove("pressed")
                 document.querySelector(".pressed").classList.remove("pressed")
             })})
             document.querySelectorAll(".overlay").forEach(function(item){
                 item.addEventListener("click", function(){
-                    document.querySelector(".help-window.active").classList.remove("active")
-                    document.querySelector(".pressed").classList.remove("pressed")
+                    
+                    item.parentElement.classList.remove("active");
                 })
             })
             document.querySelectorAll(".ticket-result").forEach(function(item){
@@ -409,6 +478,29 @@
             document.querySelector(".filter").addEventListener("click", function(event){
                 event.target.classList.add("pressed");
                 document.querySelector("#filter").classList.add("active")
+            })
+            document.querySelector(".filter-airports").addEventListener("click", function(event){
+                var target_window=event.target;
+                while(!target_window.hasAttribute("data-target")){
+                    target_window=target_window.parentElement;
+                }
+                document.querySelector(target_window.getAttribute("data-target")).classList.add("active");
+            })
+            document.querySelectorAll("#search-input").forEach(function(item){
+                item.addEventListener("keyup", function(event){
+                if (event.target.value.length>0){
+                    document.querySelector(".active .input-clear").classList.add("show");
+                } else {
+                    document.querySelector(".show.input-clear").classList.remove("show");
+                }
+            })
+            })
+            document.querySelectorAll(".input-clear").forEach(function(item){
+                item.addEventListener("click", function(event){
+                    document.querySelector(".active #search-input").value="";
+                    document.querySelector(".show.input-clear").classList.remove("show");
+                    document.querySelector(".active #search-input").focus()
+                })
             })
         }
     </script>
