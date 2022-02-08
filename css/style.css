@@ -5,19 +5,24 @@
     box-sizing: border-box;
 }
 
+html{
+    overflow: hidden;
+}
+
 body{
     max-width: 420px;
     font-family: "Poppins", sans-serif;
     min-height: 100vh;
     font-size: 12px;
     position: relative;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .full-height{
     overflow-y: auto;
     height: 100vh;
     padding-bottom: 60px;
+    overflow-x: hidden;
 }
 
 header.page{
@@ -64,6 +69,7 @@ a,span,button{
 
 .row{
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .btn{
@@ -165,7 +171,7 @@ input::placeholder{
 }
 
 .row2nd .controls{
-    width: 50%;
+    width: 45%;
     margin: 0px 5px;
     height: 50px;
 }
@@ -647,7 +653,7 @@ a{
 
 .help-window{
     position: absolute;
-    bottom: -100%;
+    bottom: -110%;
     height: 100%;
     width: 100%;
     transition: all 0.2s ease;
@@ -1376,9 +1382,7 @@ label.check{
 }
 
 .train-infos{
-    border-top: 1px solid #E4E4E4;
     width: 100%;
-    padding: 12px 0px
 }
 
 .fs10{
@@ -1394,10 +1398,21 @@ label.check{
 }
 
 .train-info{
+    padding: 12px 0px;
     width: 50%;
+    padding-right: 10px;
+    border-top: 1px solid #E4E4E4;
 }
 
 .train-info:nth-of-type(even){
+    padding-left: 8px;
     border-left: 1px solid #E4E4E4;
-    padding-left: 3px;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+html::-webkit-scrollbar{
+    display: none;
 }
