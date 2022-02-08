@@ -1161,7 +1161,7 @@ section.bg-white .go-back svg path{
 }
 
 .filter-window{
-    margin: 24px 0px;
+    margin: 24px 0px 0 0;
     padding: 12px 0px;
 }
 
@@ -1415,4 +1415,8 @@ body::-webkit-scrollbar{
 
 html::-webkit-scrollbar{
     display: none;
+}
+
+.find-result{
+    margin-top: 20px;;
 }
