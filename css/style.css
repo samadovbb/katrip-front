@@ -1281,17 +1281,17 @@ label.check{
     left: 12px;
 }
 
-#avia-companies .results{
+.filter-check .results{
     height: calc( 60vh - 120px );
 }
 
-#avia-companies .results li img{
+.filter-check .results li img{
     width: 25px;
     height: 25px;
     margin-right: 10px;
 }
 
-#avia-companies .results li label{
+.filter-check .results li label{
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -1301,16 +1301,16 @@ label.check{
     flex-direction: row;
 }
 
-#avia-companies .results{
+.filter-check .results{
     padding: 2px;
 }
 
-#avia-companies .results li{
+.filter-check .results li{
     padding: 12px 0;
     border: none;
 }
 
-#avia-companies .results li label .air{
+.filter-check .results li label .air{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -1318,12 +1318,12 @@ label.check{
 
 }
 
-#avia-companies .results li label span{
+.filter-check .results li label span{
     font-weight: 500;
     font-size: 17px;
 }
 
-#avia-companies .results li label input[type="checkbox"]{
+.filter-check .results li label input[type="checkbox"]{
     width: 22px;
     height: 22px;
 }
