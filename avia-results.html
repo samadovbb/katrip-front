@@ -307,13 +307,11 @@
         <div class="window-content">
             <div class="window-header">
                 <h2>Saralash</h2>
-                <span style="display: flex; align-items: center;">
                     <a style="font-size: 12px;" href="#">Qayta o'rnatish</a>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 6L6 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                </span>
             </div>
             <div class="window-inner filter-window">
                 <h2>Transplantatsiya</h2>
@@ -368,12 +366,11 @@
         <div class="window-content">
             <div class="window-header">
                 <h2>Aviakompaniyalar</h2>
-                <span style="display: flex; align-items: center;">
+                
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-target="#filter">
                     <path d="M18 6L6 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                </span>
             </div>
             <div class="window-inner">
                 <div class="search-group">
@@ -450,9 +447,8 @@
             })
             document.querySelectorAll(".window-header svg").forEach(function(item){
                 item.addEventListener("click", function(event){
-                    console.log(item.parentElement.parentElement.parentElement.parentElement);
-                    item.parentElement.parentElement.parentElement.parentElement.classList.remove("active")
-                    document.querySelector(".pressed").classList.remove("pressed")
+                    console.log(item.parentElement.parentElement.parentElement);
+                    item.parentElement.parentElement.parentElement.classList.remove("active")
                 document.querySelector(".pressed").classList.remove("pressed")
             })})
             document.querySelectorAll(".overlay").forEach(function(item){

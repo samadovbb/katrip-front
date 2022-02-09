@@ -876,6 +876,11 @@ section .bg-white h2{
     font-weight: 500;
 }
 
+.go-back{
+    display: flex;
+    align-items: center;
+}
+
 section.bg-white .go-back svg path{
     stroke: #109BFF;
 }
