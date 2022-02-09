@@ -1264,6 +1264,10 @@ section.bg-white .go-back svg path{
     justify-content: space-between;
 }
 
+.around{
+    justify-content: space-around;
+}
+
 label.check{
     width: 50px;
     height: 100%;
@@ -1402,6 +1406,19 @@ label.check{
     font-size: 14px!important;
 }
 
+.fw4{
+    font-weight: 400!important;
+}
+
+.fw5{
+    font-weight: 500!important;
+}
+
+.fw6{
+    font-weight: 600!important;
+}
+
+
 .train-info{
     padding: 12px 0px;
     width: 50%;
@@ -1424,4 +1441,89 @@ html::-webkit-scrollbar{
 
 .find-result{
     margin-top: 20px;;
+}
+
+.card{
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 20px 0;
+}
+
+.card-body{
+    padding: 16px;
+    width: 100%;
+}
+
+.form-group{
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.form-group label{
+    display: block;
+}
+
+.form-group input:not(input[type=radio]):not(input[type=checkbox]), .form-group select{
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    background-color: #F6F7F9;
+    min-height: 40px;
+    margin-top: 4px;
+    border: 1px solid #DFE1E4;
+    padding: 8px 12px;
+    color: #ACACAC;
+    font-family: "Poppins", sans-serif;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus, .form-group select:focus{
+    background-color: #fff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid #109BFF!important;
+    color: #484848;
+}
+
+.form-group select{
+    position: relative;
+    background: url(../img/drop.svg) 98% / 8% no-repeat #F6F7F9;
+}
+
+.checkboxes label{
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    font-size: 15px;
+    color: #484848;
+}
+
+.checkboxes label input{
+    margin-right: 4px;
+    width: 18px;
+    height: 18px;
+}
+
+section.fixed{
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+}
+
+.button-outer{
+    padding: 20px;
+}
+
+section.fixed.button-outer .btn{
+    padding: 16px;
 }
