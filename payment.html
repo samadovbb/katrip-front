@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To'lov</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <section class="full-height bg-muted">
+        <header class="page bg-white">
+            <span class="go-back">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.5 7L10.5 14L17.5 21" stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <h2> To'lov </h2>
+        </header>
+        <div class="container">
+            <div class="pay_type">
+                <h1>To‘lov turini tanlang</h1>
+                <label for="card" class="row align-items-center between fs14 fw5"> <span class="row flstart"> <img src="./img/card.png" alt=""> Karta orqali to'lov </span>
+                    
+                    <input type="radio" name="type" data-target="#pay_card" id="card">
+                </label>
+                <label for="payme" class="row align-items-center between fs14 fw5">
+                    <span class="row flstart"> <img src="./img/payme.png" alt=""> Payme orqali to'lov </span>
+                    <input type="radio" name="type" data-target="#pay_payme" id="payme">
+                </label>
+                <label for="coins" class="row align-items-center between fs14 fw5">
+                    <span class="row flstart"> <img src="./img/coin.png" alt=""> 5 302 tangaga almashish </span>
+                    <input type="radio" name="type" data-target="#pay_coins" id="coins">
+                </label>
+                <label for="cred" class="row align-items-center between fs14 fw5">
+                    <span class="row flstart"> <img src="./img/cred.png" alt=""> Bo‘lib to‘lash </span>
+                    <input type="radio" name="type" data-target="#pay_cred" id="cred">
+                </label>
+            </div>
+            <div class="tab-content">
+                <div id="pay_card" class="content active pay-content">
+                    <h2>Karta orqali to'lov</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>To‘lanadigan summa: 140 000UZS</h2>
+                            <span class="text-muted fs10 fw5">27-yan, Tosh-Bux, 09:30-17:30 yo‘nalishli (Congress Hell Zhong Tong 55) avtobusdan 10,16-o‘rinlarni band qildingiz</span>
+                            <div class="form-group">
+                                <label for="card_number">Karta raqami:</label>
+                                <input type="text" name="card_number" placeholder="0000 0000 0000 0000" id="card_number">
+                                <span class="input-append"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="32" height="32" rx="4" fill="#CCEAFF"/>
+                                    <path d="M9.33325 11.8333V10.9999C9.33325 10.5579 9.50885 10.134 9.82141 9.82141C10.134 9.50885 10.5579 9.33325 10.9999 9.33325H12.6666" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.33325 20.1667V21.0001C9.33325 21.4421 9.50885 21.866 9.82141 22.1786C10.134 22.4912 10.5579 22.6667 10.9999 22.6667H12.6666" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.3333 9.33325H20.9999C21.4419 9.33325 21.8659 9.50885 22.1784 9.82141C22.491 10.134 22.6666 10.5579 22.6666 10.9999V11.8333" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.3333 22.6667H20.9999C21.4419 22.6667 21.8659 22.4912 22.1784 22.1786C22.491 21.866 22.6666 21.4421 22.6666 21.0001V20.1667" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.1667 16H21.8334" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="card_number">Amal qilish muddati</label>
+                                <input style="max-width: 140px;" type="text" name="card_number" placeholder="mm/yy" id="card_number">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pay_payme" class="content pay-content">
+                    <h2>Bo‘lib to‘lash </h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>To‘lanadigan summa: 140 000UZS</h2>
+                            <span class="text-muted fs10 fw5">27-yan, Tosh-Bux, 09:30-17:30 yo‘nalishli (Congress Hell Zhong Tong 55) avtobusdan 10,16-o‘rinlarni band qildingiz</span>
+                            <div class="form-group">
+                                <label for="card_number">Karta raqami:</label>
+                                <input type="text" name="card_number" placeholder="0000 0000 0000 0000" id="card_number">
+                                <span class="input-append"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="32" height="32" rx="4" fill="#CCEAFF"/>
+                                    <path d="M9.33325 11.8333V10.9999C9.33325 10.5579 9.50885 10.134 9.82141 9.82141C10.134 9.50885 10.5579 9.33325 10.9999 9.33325H12.6666" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.33325 20.1667V21.0001C9.33325 21.4421 9.50885 21.866 9.82141 22.1786C10.134 22.4912 10.5579 22.6667 10.9999 22.6667H12.6666" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.3333 9.33325H20.9999C21.4419 9.33325 21.8659 9.50885 22.1784 9.82141C22.491 10.134 22.6666 10.5579 22.6666 10.9999V11.8333" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.3333 22.6667H20.9999C21.4419 22.6667 21.8659 22.4912 22.1784 22.1786C22.491 21.866 22.6666 21.4421 22.6666 21.0001V20.1667" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.1667 16H21.8334" stroke="#109BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="card_number">Amal qilish muddati</label>
+                                <input style="max-width: 140px;" type="text" name="card_number" placeholder="mm/yy" id="card_number">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fixed button-outer">
+        <button class="btn btn-primary btn-block">Davom etish</button>
+    </section>
+</body>
