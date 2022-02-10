@@ -1505,6 +1505,11 @@ html::-webkit-scrollbar{
     background: url(../img/drop.svg) 98% / 8% no-repeat #F6F7F9;
 }
 
+.form-group select:disabled{
+    background-color: #E5E5E5;
+    cursor: not-allowed;
+}
+
 .form-group input:not(input[type=radio]):not(input[type=checkbox])::placeholder{
     color: #ACACAC;
 }
@@ -1567,4 +1572,65 @@ section.fixed.button-outer .btn{
 
 .card-body h2{
     font-size: 17px;
+}
+
+#check-code{
+    opacity: 0;
+}
+
+.code-container{
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.code-place{
+    font-size: 24px;
+}
+
+#retry-time{
+    margin-top: 20px;
+}
+
+.simple-a{
+    color: #109BFF;
+}
+
+.jc-center{
+    display: flex;
+    justify-content: center;
+}
+
+.alert{
+    width: 260px;
+    height: 200px;
+    background-color: #fff;
+    padding: 20px;
+    position: absolute;
+    top: 70px;
+    right: -300px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.text-warning{
+    color: #FED314;
+}
+
+.alert.active{
+    right: 10px;
+}
+
+.alert-header{
+    margin-top: 15px;
+}
+
+.alert-text{
+    margin-top: 5px;
+}
+
+.text-success{
+    color: #109BFF;
 }

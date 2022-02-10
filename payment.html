@@ -38,7 +38,7 @@
                 </label>
             </div>
             <div class="tab-content">
-                <div id="pay_card" class="content active pay-content">
+                <div id="pay_card" class="content pay-content">
                     <h2>Karta orqali to'lov</h2>
                     <div class="card">
                         <div class="card-body">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div id="pay_payme" class="content pay-content">
-                    <h2>Bo‘lib to‘lash </h2>
+                    <h2>Payme orqali to'lov </h2>
                     <div class="card">
                         <div class="card-body">
                             <h2>To‘lanadigan summa: 140 000UZS</h2>
@@ -90,10 +90,63 @@
                         </div>
                     </div>
                 </div>
+                <div id="pay_coins" class="content pay-content">
+                    <h2>Tangaga almashish </h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Hisobingizdan 5 302 tanga yechiladi</h2>
+                        </div>
+                    </div>
+                </div>
+                <div id="pay_cred" class="content pay-content">
+                    <h2>Bo'lib to'lash </h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <label class="d-flex align-items-center" for="iman"><input type="radio" name="cred_list" id="iman"> <img style="margin-left: 20px;"  src="./img/iman.png" alt=""> </label>
+                            <div class="form-group" id="iman_list">
+                                <label for="iman_select">To‘lov muddati va narxi:</label>
+                                <select disabled name="select" id="iman_select">
+                                    <option value="50">3 oy = 50 000 UZS/oylik</option>
+                                    <option value="20">6 oy = 20 000 UZS/oylik</option>
+                                </select>
+                            </div>
+                            <label class="d-flex align-items-center" for="market"><input type="radio" name="cred_list" id="market"> <img style="margin-left: 20px;" src="./img/market.png" alt=""> </label>
+                            <div class="form-group" id="market_list">
+                                <label for="market_select">To‘lov muddati va narxi:</label>
+                                <select disabled name="select" id="market_select">
+                                    <option value="50">3 oy = 50 000 UZS/oylik</option>
+                                    <option value="20">6 oy = 20 000 UZS/oylik</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     <section class="fixed button-outer">
-        <button class="btn btn-primary btn-block">Davom etish</button>
+        <button onclick="window.location.href='phone.html'" class="btn btn-primary btn-block">Davom etish</button>
     </section>
+    <script>
+        window.onload=function(){
+            document.querySelectorAll(".pay_type input[type=radio]").forEach(function(item){
+                item.addEventListener("change", function(event){
+                    document.querySelectorAll(".content.active").forEach(function(item){
+                        item.classList.remove("active");
+                    })
+                    document.querySelector(item.getAttribute("data-target")).classList.add("active");
+                })
+            })
+            document.querySelectorAll("#pay_cred input[type=radio]").forEach(function(item){
+                item.style.width="20px";
+                item.style.height="20px";
+                item.addEventListener("change", function(event){
+                    document.querySelectorAll("select").forEach(function(select){
+                        select.disabled=true;
+                    })
+                    document.querySelector("#"+item.id+"_select").disabled=false;
+                })
+            })
+        }
+    </script>
 </body>

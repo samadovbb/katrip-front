@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <section class="full-height bg-muted">
+        <header class="page bg-white">
+            <span class="go-back">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.5 7L10.5 14L17.5 21" stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <h2> SMS kod </h2>
+        </header>
+        <div class="container">
+            <h2 class="fw6">SMS kodni kiriting</h2>
+            <span class="text-muted fs12 fw4">Payme orqali +998 *****5312 ga SMS yuborildi</span>
+            <input type="number" name="check-code" id="check-code" maxlength="6">
+            <label for="check-code"> 
+                <div class="code-container">
+                    <div class="code-place">
+                        - - - - - -
+                    </div>
+                    <span id="retry-time" class="text-muted fs12 fw4">00:00</span>
+                </div>
+            </label>
+        </div>
+    </section>
+    <div class="alert">
+        <div class="d-flex align-items-center jc-center">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 38.5C31.1127 38.5 38.5 31.1127 38.5 22C38.5 12.8873 31.1127 5.5 22 5.5C12.8873 5.5 5.5 12.8873 5.5 22C5.5 31.1127 12.8873 38.5 22 38.5Z" stroke="#109BFF" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.5 21.9999L20.1667 25.6666L27.5 18.3333" stroke="#109BFF" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <h3 class="alert-header fw5 fs14 text-center"></h3>
+        <p class="alert-text text-muted fs10" style="text-align: center;"></p>
+        <div class="d-flex jc-center">
+            <button onclick="window.location.href='index.html'" class="btn btn-primary">Asosiy oynaga qaytish</button>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+            const rightCode=254565;
+            const checkInput=document.querySelector("#check-code");
+            let retry=120;
+            const retryContent=document.querySelector("#retry-time")
+            const timeSchot=setInterval(function(){
+                if (retry>0){
+                    retry=retry-1;
+                    retryContent.innerText=`0${parseInt(retry/60)}:${retry%60<10? "0"+retry%60:retry%60}`
+                } else {
+                    retryContent.innerHTML=`<a href="#" class="simple-a fs12 fw4">Qayta jo'natish</a>`
+                }
+            }, 1000)
+            checkInput.addEventListener("keyup", function(){
+                let code=""
+                for (let index = 0; index < 6; index++) {
+                    code+=(checkInput.value[index]||"-")+" ";
+                }
+                if (checkInput.value.length>6){
+                    checkInput.value=code.replaceAll(" ", "");
+                }
+                document.querySelector(".code-place").innerText=code;
+                if (checkInput.value.length==6 && checkInput.value==rightCode){
+                    checkInput.disabled=true;
+                    document.querySelector(".alert-header").innerText="Chiptangiz tasdiqlandi";
+                    document.querySelector(".alert-text").innerText="Xarid qilgan chiptangizni chiptalarim bo‘limidan ko‘rishingiz mumkin!";
+                    setTimeout(function(){
+                        document.querySelector(".code-place").classList.add("text-success");
+                        document.querySelector(".alert").classList.add("active");
+                        clearInterval(timeSchot);
+                        retryContent.innerText="";
+                    }, 1000)
+                    
+                } else if(checkInput.value.length==6){
+                    setTimeout(function(){
+                        document.querySelector(".code-place").classList.add("text-warning");
+                    }, 1000)
+                } else {
+                    document.querySelector(".code-place").classList.remove("text-warning")
+                }
+            })
+            checkInput.focus();
+        }
+    </script>
+</body>
+</html>
