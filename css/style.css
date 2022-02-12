@@ -84,11 +84,11 @@ a,span,button{
 }
 
 .w-100{
-    width: 100%;
+    width: 100%!important;
 }
 
 .h-100{
-    height: 100%;
+    height: 100%!important;
 }
 
 .btn-blur{
@@ -617,7 +617,11 @@ a{
 }
 
 .ticket{
-    margin: 6px 0px;
+    margin: 15px 0px;
+}
+
+.ticket-header{
+    margin-top: 24px;
 }
 
 .ticket::after{
@@ -626,9 +630,13 @@ a{
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    top: 45%;
+    bottom: 68px;
     background-color: #f3f3f3;
     left: -6px;
+}
+
+.t-pr{
+    color: #109BFF
 }
 
 .ticket::before{
@@ -637,7 +645,7 @@ a{
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    top: 45%;
+    bottom: 68px;
     background-color: #f3f3f3;
     right: -6px;
 }
@@ -1258,10 +1266,15 @@ section.bg-white .go-back svg path{
 
 .row{
     display: flex;
+    flex-direction: row!important;
+}
+
+.pb0{
+    padding-bottom: 0!important;
 }
 
 .between{
-    justify-content: space-between;
+    justify-content: space-between!important;
 }
 
 .around{
