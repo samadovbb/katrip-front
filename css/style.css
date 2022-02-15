@@ -1647,3 +1647,39 @@ section.fixed.button-outer .btn{
 .text-success{
     color: #109BFF;
 }
+
+.none{
+    display: none;
+}
+
+#say_error{
+    padding: 6px;
+    position: absolute;
+    top: 150px;
+    right: -200px;
+    max-width: 200px;
+    width: 200px;
+    border-radius: 4px;
+    background-color: #d90429a8;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    color: #fff;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+#say_error.active{
+    right: 10px;
+}
+
+.err_icon{
+    padding: 9px 15px;
+    font-size: 18px;
+    background-color: #c3000063;
+    border-radius: 50%;
+}
+
+.err_text{
+    padding: 0 8px;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <section class="full-height bg-muted">
+        <header class="page bg-white">
+            <span class="go-back">
+                
+            </span>
+            <h2> Tizimga kirish </h2>
+        </header>
+        <div class="container">
+            <h3 class="fw5">Tizimga kirish uchun telefon raqamingizni kiriting:</h3>
+            <input type="number" name="check-code" id="check-code">
+
+            <label for="check-code"> 
+                <div class="code-container">
+                    <div class="code-place">
+                        +998 -- --- -- --
+                    </div>
+                </div>
+            </label>
+            <div class="none">
+                <div class="form-group none">
+                    <label for="password"> Ism Familiyangiz: </label>
+                    <input type="text" name="fio" id="fio">
+                </div>
+                <div class="form-group">
+                    <label for="password"> Parol kiriting: </label>
+                    <input type="password" name="password" id="password">
+                </div>
+            </div>
+            
+        </div>
+        <section class="fixed button-outer none" id="next">
+            <button class="btn btn-primary btn-block">Davom etish</button>
+        </section>
+    </section>
+    <script src="./request.js"></script>
+    <script>
+        const checkInput=document.querySelector("#check-code");
+        const parol=document.querySelector("#password");
+        const fio=document.querySelector("#fio");
+        const nextBtn=document.querySelector("#next");
+        let signUp=true;
+        function onCheckToken(event){
+            console.log(JSON.parse(event.target.response))
+            if (JSON.parse(event.target.response).status=="success"){
+                window.location.href="./index.html"
+            }
+        }
+
+        function checkToken(){
+            const token=localStorage.getItem("token")|| "";
+            if (token!==""){
+                send_req(token+"/me", "GET", JSON.stringify({}), onCheckToken);
+            }
+        }
+
+        function onReqCheckSuccess(event){
+            console.log(event.target.response);
+            let response=JSON.parse(event.target.response);
+            if (response.data.check=="No"){
+                parol.parentElement.parentElement.classList.remove("none");
+                fio.parentElement.classList.remove("none")
+                fio.focus();
+            } else if (response.data.check=="Yes"){
+                fio.parentElement.classList.add("none");
+                parol.parentElement.parentElement.classList.remove("none");
+                parol.focus();
+                signUp=false;
+            }
+        }
+        function onSingUpSuccess(event){
+            console.log(JSON.parse(event.target.response));
+            let response=JSON.parse(event.target.response);
+            if (response.message=="Ok" && !response.data.token){
+                signUp=false;
+                setSignReq();
+            } else if (response.data.token) {
+                localStorage.setItem("token", response.data.token);
+                checkToken();
+            } else {
+                sayError(JSON.parse(event.target.response).data.err);
+            }
+        }
+
+        function setSignReq(){
+            let req_body=signUp?{
+                username: "998"+checkInput.value,
+                phone: checkInput.value,
+                password: parol.value,
+                full_name: fio.value
+            }:{username: "998"+checkInput.value, password: parol.value};
+            send_req(signUp?"sign-up":"sign-in", "POST", JSON.stringify(req_body), onSingUpSuccess);
+        }
+        window.onload=function(){
+            checkInput.addEventListener("keyup", function(){
+                let code="+998 "
+                for (let index = 0; index < 9; index++) {
+                    code+=(checkInput.value[index]||"-");
+                    if (index==1 || index==4 || index==6) code+=" ";
+                }
+                if (checkInput.value.length>9){
+                    checkInput.value=code.replaceAll(" ", "").replaceAll("-","").replaceAll("+998","");
+                }
+                document.querySelector(".code-place").innerText=code;
+                if (checkInput.value.length==9){
+                    send_req(`check:998${checkInput.value}`, "GET", {}, onReqCheckSuccess);
+                } else if(checkInput.value.length==9){
+                    setTimeout(function(){
+                        document.querySelector(".code-place").classList.add("text-warning");
+                    }, 1000)
+                } else {
+                    document.querySelector(".code-place").classList.remove("text-warning")
+                }
+            })
+            parol.addEventListener("keyup", function(){
+                if (parol.value.length>=3){
+                    nextBtn.classList.remove("none")
+                } else {
+                    nextBtn.classList.add("none")
+                }
+            })
+            nextBtn.querySelector(".btn").addEventListener("click", function(){
+                setSignReq();
+            })
+            checkInput.focus();
+            parol.addEventListener("keyup", function(event){
+                if (event.keyCode == 13 && parol.value.length>=3){
+                    nextBtn.querySelector(".btn").click();
+                } else if (event.keyCode=="13"){
+                    sayError("Parol kamida 3 ta belgidan iborat bo'lishi kerak!")
+                }
+            })
+        }
+    </script>
+</body>
+</html>
