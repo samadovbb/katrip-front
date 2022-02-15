@@ -569,7 +569,16 @@
     </div>
 </section>
     <script src="./js/datepicker.js"></script>
+    <script src="./request.js"></script>
     <script>
+        function onCheckToken(event){
+            console.log(JSON.parse(event.target.response))
+            if (JSON.parse(event.target.response).status!=="success"){
+                window.location.href="./login.html"
+            } else {
+                document.getElementById("coins").innerText=JSON.parse(event.target.response).data.userInfo.balanc;
+            }
+        }
         let called=false;
         let p_class=""
         let p_count={
@@ -592,6 +601,7 @@
         }
 
         window.onload = function(){
+            checkToken();
             document.querySelectorAll(".tab-control").forEach(function(item){
                 item.addEventListener("click", function(event){
                     document.querySelector(".content.active").classList.remove("active");

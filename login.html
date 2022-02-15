@@ -55,14 +55,6 @@
                 window.location.href="./index.html"
             }
         }
-
-        function checkToken(){
-            const token=localStorage.getItem("token")|| "";
-            if (token!==""){
-                send_req(token+"/me", "GET", JSON.stringify({}), onCheckToken);
-            }
-        }
-
         function onReqCheckSuccess(event){
             console.log(event.target.response);
             let response=JSON.parse(event.target.response);

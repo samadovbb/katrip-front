@@ -44,3 +44,12 @@ function send_req(url, method, body, req_load1=req_load, req_error1=req_error, r
     xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
     xhr.send(body);
 }
+
+function checkToken(){
+    const token=localStorage.getItem("token")|| "";
+    if (token!==""){
+        send_req(token+"/me", "GET", JSON.stringify({}), onCheckToken);
+    } else {
+        window.location.href="login.html";
+    }
+}

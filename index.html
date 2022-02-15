@@ -32,7 +32,7 @@
             <div class="balance  ">
                 <button class="btn btn-blur d-flex w-100 h-100 text-center">
                     <img src="./img/coin.png" alt="">
-                    <span class="mx-3">22.000</span>
+                    <span id="coins" class="mx-3">???</span>
                 </button>
             </div>
             <div class="notification ">
@@ -93,7 +93,7 @@
                     A > B
                 </div>
             </div>
-            <div class="widget">
+            <div class="widget" onclick="window.location.href='./aviabiletlar.html'">
                 <div class="widget-icon">
                     <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 7H18C18.5304 7 19.0391 7.21071 19.4142 7.58579C19.7893 7.96086 20 8.46957 20 9C20 9.53043 19.7893 10.0391 19.4142 10.4142C19.0391 10.7893 18.5304 11 18 11H14L10 18H7L9 11H5L3 13H0L2 9L0 5H3L5 7H9L7 0H10L14 7Z" fill="#75A5F3"/>
@@ -433,8 +433,18 @@
         </div>
     </section>
 </section>
+    <script src="./request.js"></script>
     <script>
+        function onCheckToken(event){
+            console.log(JSON.parse(event.target.response))
+            if (JSON.parse(event.target.response).status!=="success"){
+                window.location.href="./login.html"
+            } else {
+                document.getElementById("coins").innerText=JSON.parse(event.target.response).data.userInfo.balanc;
+            }
+        }
         window.onload=function(){
+            checkToken();
             document.querySelector(".drop-controls").addEventListener("click", function(){
                 document.querySelector(".lifehacks").classList.toggle("active")
             })
