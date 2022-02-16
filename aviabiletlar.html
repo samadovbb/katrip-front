@@ -394,70 +394,6 @@
                </span>
            </div>
            <ul class="results">
-               <li>
-                    <div>
-                        <span>Samarqand</span><span>O'zbekiston</span>
-                    </div>
-                    <div class="short">
-                        SMRQ
-                    </div>
-                </li>
-               <li>
-                    <div>
-                        <span>Buxoro</span><span>O'zbekiston</span>
-                    </div>
-                    <div class="short">
-                        BKH
-                    </div>
-                </li>
-               <li>
-                    <div>
-                        <span>Toshkent</span><span>O'zbekiston</span>
-                    </div>
-                    <div class="short">
-                        TSHK
-                    </div>
-                </li>
-               <li>
-                    <div>
-                        <span>Farg'ona</span><span>O'zbekiston</span>
-                    </div>
-                    <div class="short">
-                        FRG
-                    </div>
-                </li>
-               <li>
-                    <div>
-                        <span>Namangan</span><span>O'zbekiston</span>
-                    </div>
-                    <div class="short">
-                        NMG
-                    </div>
-                </li>
-               <li>
-                    <div>
-                        <span>Buxoro</span><span>O'zbekiston</span>
-                    </div>
-                    <div class="short">
-                        BKH
-                    </div>
-                </li>
-               <li>
-                    <div>
-                        <span>Buxoro</span><span>O'zbekiston</span>
-                    </div>
-                    <div class="short">
-                        BKH
-                    </div>
-                </li>
-               <li>
-                    <div>
-                        <span>Buxoro</span><span>O'zbekiston</span>
-                    </div>
-                    <div class="short">
-                        BKH
-                    </div>
-                </li>
            </ul>
        </div>
         
@@ -575,8 +511,6 @@
             console.log(JSON.parse(event.target.response))
             if (JSON.parse(event.target.response).status!=="success"){
                 window.location.href="./login.html"
-            } else {
-                document.getElementById("coins").innerText=JSON.parse(event.target.response).data.userInfo.balanc;
             }
         }
         let called=false;
@@ -586,20 +520,53 @@
             "bolalar" :0,
             "chaqaloqlar" :0,
         }
-        function create_results(target){
-            if (!called){
-                document.querySelectorAll(".help-window.active .results li").forEach(function(item){
-                    console.log(document.querySelector(".search-btn.pressed"));
-                    item.addEventListener("click", function(event){
-                        document.querySelector(".search-btn.pressed .selected-value").innerText=event.target.querySelector("div:nth-child(1) span:nth-child(1)").innerText;
-                        document.querySelector(".help-window.active").classList.remove("active");
-                        document.querySelector(".search-btn.pressed").classList.remove("pressed")
-                    })
+        let searchTimeOut;
+        function create_results(){
+            document.querySelectorAll(".help-window.active .results li").forEach(function(item){
+                console.log(document.querySelector(".search-btn.pressed"));
+                item.addEventListener("click", function(event){
+                    console.log(event.target.tagName);
+                    var li=event.target;
+                    while(li.tagName!="LI"){
+                        console.log(li.tagName);
+                        li=li.parentNode;
+                    }
+                    document.querySelector(".search-btn.pressed .selected-value").innerText=li.querySelector("div:nth-child(1) span:nth-child(1)").innerText;
+                    document.querySelector(".help-window.active").classList.remove("active");
+                    document.querySelector(".search-btn.pressed").classList.remove("pressed")
                 })
-                called=true;
+            })
+        }
+        function onSearchSuccess(event){
+            console.log(JSON.parse(event.target.response));
+            let inner="";
+            if (JSON.parse(event.target.response).status=="success"){
+                JSON.parse(event.target.response).data.country.forEach(function(country){
+                    inner+=`<li><div><span>${country.subType}: ${country.address.cityName}</span><span>${country.address.countryName}</span></div><div class="short">${country.address.cityCode}</div></li>`
+                })
+                if (JSON.parse(event.target.response).data.country.length>0){
+                    document.querySelector(".results").innerHTML=inner;
+                    create_results();
+                }
+                else if (JSON.parse(event.target.response).data.country.length==0){
+                    document.querySelector(".results").innerHTML=`<li><span> Natijalar topilmadi. </span></li>`
+                }
             }
         }
-
+        function locationsSearch(text){
+            if (text==""){
+                clearTimeout(searchTimeOut);
+                document.querySelector(".results").innerHTML="<li><span> Natijalar topilmadi... </span></li>"
+                return
+            }
+            document.querySelector(".results").innerHTML="<li><span> Qidirilmoqda... </span></li>"
+            if (searchTimeOut){
+                clearTimeout(searchTimeOut);
+            }
+            searchTimeOut=setTimeout(function(){
+                send_req(token+"/amadeus/country?key="+text, "GET", {}, onSearchSuccess)
+            }, 1000)
+        }
         window.onload = function(){
             checkToken();
             document.querySelectorAll(".tab-control").forEach(function(item){
@@ -616,10 +583,10 @@
                     if (item.getAttribute("data-target")=="#from-date"){
                         create_picker(item);
                     } else {
-                        create_results(item);
+                        create_results();
                     }
                     document.querySelector(".help-window.active .window-header h2").innerText=item.querySelector(".label").innerText;
-                    event.target.classList.add("pressed");
+                    item.classList.add("pressed");
                 })
             })
             document.querySelectorAll(" .window-header svg").forEach(function(item){
@@ -629,17 +596,19 @@
             })})
             document.querySelectorAll("#search-input").forEach(function(item){
                 item.addEventListener("keyup", function(event){
-                if (event.target.value.length>0){
-                    document.querySelector(".active .input-clear").classList.add("show");
-                } else {
-                    document.querySelector(".show.input-clear").classList.remove("show");
-                }
-            })
+                    if (event.target.value.length>0){
+                        document.querySelector(".active .input-clear").classList.add("show");
+                    } else {
+                        document.querySelector(".show.input-clear").classList.remove("show");
+                    }
+                    locationsSearch(event.target.value);
+                })
             })
             document.querySelectorAll(".input-clear").forEach(function(item){
                 item.addEventListener("click", function(event){
                     document.querySelector(".active #search-input").value="";
                     document.querySelector(".show.input-clear").classList.remove("show");
+                    document.querySelector(".results").innerHTML=`<li><span> Natijalar topilmadi. </span></li>`
                     document.querySelector(".active #search-input").focus()
                 })
             })

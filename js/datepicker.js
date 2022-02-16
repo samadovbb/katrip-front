@@ -72,6 +72,8 @@ function renderCalendar(target){
      days += `<div class="next-date">${j}</div>`;
     
   }
+  document.getElementsByName("month")[0].value=date.getMonth()+1;
+  document.getElementsByName("year")[0].value=date.getFullYear();
   monthDays.innerHTML = days;
   document.querySelectorAll(".days div").forEach(function(item){
     item.style.height=item.offsetWidth+"px";
@@ -92,6 +94,5 @@ function create_picker(target){
     date.setFullYear(event.target.value);
     renderCalendar(target);
   });
-  
   renderCalendar(target);
 }

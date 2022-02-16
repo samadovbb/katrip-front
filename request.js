@@ -44,7 +44,7 @@ function send_req(url, method, body, req_load1=req_load, req_error1=req_error, r
     xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
     xhr.send(body);
 }
-
+const token=localStorage.getItem("token")|| "";
 function checkToken(){
     const token=localStorage.getItem("token")|| "";
     if (token!==""){
