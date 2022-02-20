@@ -29,7 +29,7 @@ function req_progress(event){
     console.log(event);
 }
 function send_req(url, method, body, req_load1=req_load, req_error1=req_error, req_progress1=req_progress){
-    url="http://katrip.incrm.uz/api/v1/"+url;
+    url="https://katrip.incrm.uz/api/v1/"+url;
     let xhr = new XMLHttpRequest();
     xhr.addEventListener("progress", req_progress1, false);
     xhr.addEventListener("load", req_load1, false);
