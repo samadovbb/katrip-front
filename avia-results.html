@@ -427,8 +427,33 @@
             </div>
         </div>
     </section>
+    <script src="./request.js"></script>
     <script>
+        function onCheckToken(event){
+            console.log(JSON.parse(event.target.response))
+            if (JSON.parse(event.target.response).status!=="success"){
+                window.location.href="./login.html"
+            }
+        }
+        function onTicketsSuccess(event){
+            console.log(JSON.parse(event.target.response).data);
+        }
+        function getTickets(){
+            if (localStorage.getItem("air-properties")){
+                const from=JSON.parse(localStorage.getItem("air-properties")).from;
+                const to=JSON.parse(localStorage.getItem("air-properties")).to;
+                const passengers=JSON.parse(localStorage.getItem("air-properties")).passengers;
+                const date=new Date(from.date).toISOString().split("T")[0]
+                send_req(token+`/amadeus/search?from=${from.location.code}&to=${to.location.code}&date=${date}&adults=${passengers.count.kattalar}&children=${passengers.count.bolalar}&infants=${passengers.count.chaqaloqlar}`, "GET", JSON.stringify({}), onTicketsSuccess);
+            }
+        }
         window.onload = function(){
+            document.body.innerHTML+=(`<div id="say_error">
+                        <div class="err_icon"> &times; </div>
+                        <p class="err_text">
+                            
+                        </p>
+                        </div>`)
             document.querySelectorAll(".slider-item").forEach(function(item){
                 item.addEventListener("click", function(event){
                     document.querySelectorAll(".slider-item.active").forEach(function(item_inner){
@@ -498,6 +523,7 @@
                     document.querySelector(".active #search-input").focus()
                 })
             })
+            checkToken();
         }
     </script>
 </body>

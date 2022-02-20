@@ -1,26 +1,21 @@
-document.body.innerHTML+=(`        <div id="say_error">
-<div class="err_icon"> &times; </div>
-<p class="err_text">
-    
-</p>
-</div>`)
+
 const errorDiv=document.querySelector("#say_error");
 let timeOutError;
 function sayError(error){
     console.log(error)
     if (timeOutError){
         clearTimeout(timeOutError);
-        errorDiv.classList.remove("active");
-        errorDiv.querySelector(".err_text").innerText=error;
+        document.querySelector("#say_error").classList.remove("active");
+        document.querySelector("#say_error").querySelector(".err_text").innerText=error;
         setTimeout(function(){
-            errorDiv.classList.add("active");
+            document.querySelector("#say_error").classList.add("active");
         }, 1000)
     } else {
-        errorDiv.querySelector(".err_text").innerText=error;
-        errorDiv.classList.add("active");
+        document.querySelector("#say_error").querySelector(".err_text").innerText=error;
+        document.querySelector("#say_error").classList.add("active");
     }
     timeOutError=setTimeout(function(){
-        errorDiv.classList.remove("active");
+        document.querySelector("#say_error").classList.remove("active");
     }, 10000)
 }
 

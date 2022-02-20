@@ -106,7 +106,7 @@
                     <div class="selected-value"> <span> </span> <span class="p_class">  </span></div>
                 </div>
             </div>
-            <button class="btn btn-primary btn-block">Izlash</button>
+            <button onclick="search_click()" class="btn btn-primary btn-block">Izlash</button>
         </div>
         <div id="tickets" class="content ">
             <h1>Faol chiptalar</h1>
@@ -520,19 +520,35 @@
             "bolalar" :0,
             "chaqaloqlar" :0,
         }
+        let p_from={};
+        let p_to={};
+        let from_date;
+        let to_date;
         let searchTimeOut;
         function create_results(){
             document.querySelectorAll(".help-window.active .results li").forEach(function(item){
-                console.log(document.querySelector(".search-btn.pressed"));
                 item.addEventListener("click", function(event){
-                    console.log(event.target.tagName);
                     var li=event.target;
                     while(li.tagName!="LI"){
                         console.log(li.tagName);
                         li=li.parentNode;
                     }
+                    
                     document.querySelector(".search-btn.pressed .selected-value").innerText=li.querySelector("div:nth-child(1) span:nth-child(1)").innerText;
                     document.querySelector(".help-window.active").classList.remove("active");
+                    if (document.querySelector(".search-btn.pressed").querySelector(".label").innerText=="Qayerdan"){
+                        p_from={
+                            name: li.querySelector("span:nth-child(1)").innerText,
+                            code: li.querySelector(".short").innerText,
+                            country: li.querySelector("span:nth-child(2)").innerText
+                        }
+                    } else {
+                        p_to={
+                            name: li.querySelector("span:nth-child(1)").innerText,
+                            code: li.querySelector(".short").innerText,
+                            country: li.querySelector("span:nth-child(2)").innerText
+                        }
+                    }
                     document.querySelector(".search-btn.pressed").classList.remove("pressed")
                 })
             })
@@ -542,7 +558,7 @@
             let inner="";
             if (JSON.parse(event.target.response).status=="success"){
                 JSON.parse(event.target.response).data.country.forEach(function(country){
-                    inner+=`<li><div><span>${country.subType}: ${country.address.cityName}</span><span>${country.address.countryName}</span></div><div class="short">${country.address.cityCode}</div></li>`
+                    inner+=`<li><div><span>${country.subType}: ${country.name} ${country.subType=="AIRPORT" ? "("+country.address.cityName+")": ""}</span><span>${country.address.countryName}</span></div><div class="short">${country.iataCode}</div></li>`
                 })
                 if (JSON.parse(event.target.response).data.country.length>0){
                     document.querySelector(".results").innerHTML=inner;
@@ -651,6 +667,18 @@
                 document.querySelector(".from.search-btn .selected-value").innerText=document.querySelector(".to.search-btn .selected-value").innerText;
                 document.querySelector(".to.search-btn .selected-value").innerText=from_val;
             })
+        }
+        function search_click(){
+            if (p_from.name && p_to.name && from_date>0 && to_date>0 && p_class.length>0 && (p_count.bolalar+p_count.kattalar+p_count.chaqaloqlar)>0){
+                localStorage.setItem("air-properties", JSON.stringify({
+                    from: {location: p_from, date: from_date},
+                    to: {location: p_to, date: to_date},
+                    passengers: {count: p_count, class: p_class}
+                }))
+                window.location.href="avia-results.html";
+            } else {
+                sayError("Xatolik: Barcha maydonlar to'ldirilishi shart!");
+            }
         }
     </script>
 </body>

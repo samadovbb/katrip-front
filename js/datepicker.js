@@ -2,7 +2,7 @@ const date = new Date();
 let date2 = date;
 const week=[
   "Dush",
-  "Sehs",
+  "Sesh",
   "Chor",
   "Pay",
   "Jum",
@@ -80,11 +80,17 @@ function renderCalendar(target){
     item.addEventListener("click", (event) => {
       date.setDate(event.target.innerHTML);
       return_element.innerText=date.getDate()+" "+months[date.getMonth()]+", "+week[date.getDay()];
+      if(target.classList[0]=="from-date"){
+        from_date=date.getTime();
+      } else {
+        to_date=date.getTime();
+      }
       renderCalendar(target);
     });
   });
 };
 function create_picker(target){
+
   document.querySelector(".month").addEventListener("change", function(event){
     date.setMonth(event.target.value-1);
     renderCalendar(target);
