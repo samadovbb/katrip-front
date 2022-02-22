@@ -296,11 +296,11 @@
             return from_date.getHours()+":"+from_minutes+" - "+to_date.getHours()+":"+to_minutes;
         }
         function showTimeDiff(ticket){
-            const dateDiff=new Date(ticket.itineraries[0].segments[ticket.itineraries[0].segments.length-1].departure.at);
-            console.log(dateDiff)-new Date(ticket.itineraries[0].segments[0].departure.at);
-            let natija;
-            if (new Date(dateDiff).getDay()>1){
-                natija=new Date(dateDiff).getDay()+" k, "
+            const dateDiff=new Date(ticket.itineraries[0].segments[ticket.itineraries[0].segments.length-1].departure.at)-new Date(ticket.itineraries[0].segments[0].departure.at);
+            console.log(new Date(dateDiff));
+            let natija="";
+            if (new Date(dateDiff).getDate()>0){
+                natija=new Date(dateDiff).getDate()+" k, "
             }
             natija+=new Date(dateDiff).getHours()+"s, "+new Date(dateDiff).getMinutes()+" daq";
             return natija
