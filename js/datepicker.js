@@ -53,7 +53,6 @@ function renderCalendar(target){
   const nextDays = 7 - (lastDayIndex==6?0:lastDayIndex) - 1;
 
   let days = "";
-    //console.log(firstDayIndex)
   for (let x = firstDayIndex; x > 0; x--) {
     days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
   }
@@ -79,6 +78,9 @@ function renderCalendar(target){
     item.style.height=item.offsetWidth+"px";
     item.addEventListener("click", (event) => {
       date.setDate(event.target.innerHTML);
+      if (date <= new Date()) { sayError("Ushbu sana bo'yicha bilet buyurtma qilib bo'lmaydi"); return 'UNDER_OR_EQUAL_TODAY'; }
+      if (event.target.classList[0]=="next-date") date.setMonth(date.getMonth()+1);
+      if (event.target.classList[0]=="prev-date") date.setMonth(date.getMonth()-1);
       return_element.innerText=date.getDate()+" "+months[date.getMonth()]+", "+week[date.getDay()];
       if(target.classList[0]=="from-date"){
         from_date=date.getTime();
@@ -90,7 +92,6 @@ function renderCalendar(target){
   });
 };
 function create_picker(target){
-
   document.querySelector(".month").addEventListener("change", function(event){
     date.setMonth(event.target.value-1);
     renderCalendar(target);
@@ -100,5 +101,7 @@ function create_picker(target){
     date.setFullYear(event.target.value);
     renderCalendar(target);
   });
+  document.querySelector(".calendar").parentElement.style.display="flex";
+  document.querySelector(".calendar").parentElement.style.justifyContent="center";
   renderCalendar(target);
 }

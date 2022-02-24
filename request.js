@@ -1,4 +1,9 @@
-
+document.body.innerHTML+=(`        <div id="say_error">
+<div class="err_icon"> &times; </div>
+<p class="err_text">
+    
+</p>
+</div>`)
 const errorDiv=document.querySelector("#say_error");
 let timeOutError;
 function sayError(error){
