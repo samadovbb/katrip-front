@@ -1,13 +1,13 @@
 const date = new Date();
 let date2 = date;
 const week=[
+  "Yak",
   "Dush",
   "Sesh",
   "Chor",
   "Pay",
   "Jum",
-  "Shan",
-  "Yak"
+  "Shan"
 ], 
 months=[
   "Yan",
@@ -78,9 +78,14 @@ function renderCalendar(target){
     item.style.height=item.offsetWidth+"px";
     item.addEventListener("click", (event) => {
       date.setDate(event.target.innerHTML);
-      if (date <= new Date()) { sayError("Ushbu sana bo'yicha bilet buyurtma qilib bo'lmaydi"); return 'UNDER_OR_EQUAL_TODAY'; }
       if (event.target.classList[0]=="next-date") date.setMonth(date.getMonth()+1);
       if (event.target.classList[0]=="prev-date") date.setMonth(date.getMonth()-1);
+      if (date <= new Date()) { 
+        sayError("Ushbu sana bo'yicha chipta buyurtma qilib bo'lmaydi"); 
+        if (event.target.classList[0]=="next-date") date.setMonth(date.getMonth()-1);
+        if (event.target.classList[0]=="prev-date") date.setMonth(date.getMonth()+1);
+        return 'UNDER_OR_EQUAL_TODAY'; 
+      }
       return_element.innerText=date.getDate()+" "+months[date.getMonth()]+", "+week[date.getDay()];
       if(target.classList[0]=="from-date"){
         from_date=date.getTime();

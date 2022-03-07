@@ -24,57 +24,18 @@
     </header>
     <nav class="slider-container">
         <div class="slider" style="width: calc( 105px * 10)">
-            <div class="slider-item">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
-            <div class="slider-item active">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
-            <div class="slider-item">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
-            <div class="slider-item">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
-            <div class="slider-item">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
-            <div class="slider-item">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
-            <div class="slider-item">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
-            <div class="slider-item">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
-            <div class="slider-item">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
-            <div class="slider-item">
-                <span class="date">26 yan, chor </span>
-                <span class="cost">420 000 UZS </span>
-            </div>
+            
         </div>
     </nav>
     <div class="container">
-        <div class="ticket-types">
+        <!-- <div class="ticket-types">
             <span class="badge active">Arzon</span>
             <span class="badge">Tezkor</span>
             <span class="badge">Arzon</span>
             <span class="badge">Arzon</span>
-        </div>
+        </div> -->
         <div class="tickets">
-            So'rov bo'yicha biletlar qidirilmoqda... <br>
+            So'rov bo'yicha chiptalar qidirilmoqda... <br>
             Iltimos kuting...
         </div>
     </div>
@@ -272,15 +233,17 @@
     <script src="./request.js"></script>
     <script>
         let allTickets=[];
-        function onCheckToken(event){
-            console.log(JSON.parse(event.target.response))
-            if (JSON.parse(event.target.response).status!=="success"){
-                window.location.href="./login.html"
-            }
+        // For show money as MO NEY 000
+        function showMoney(money){
+            let result=money.toString().split("").reverse().map(function(digit,index){
+                return index%3==0?digit+" ":digit;
+            }).reverse().join("");
+            return result;
         }
+        // For show tickets time as HH:MM - HH:MM of ticket
         function showTime(ticket){
             const from_date=new Date(ticket.itineraries[0].segments[0].departure.at);
-            const to_date=new Date(ticket.itineraries[0].segments[ticket.itineraries[0].segments.length-1].departure.at);
+            const to_date=new Date(ticket.itineraries[0].segments[ticket.itineraries[0].segments.length-1].arrival.at);
             let from_minutes="";
             if (from_date.getMinutes()>9){
                 from_minutes=from_date.getMinutes();
@@ -295,16 +258,55 @@
             }
             return from_date.getHours()+":"+from_minutes+" - "+to_date.getHours()+":"+to_minutes;
         }
+        // For show time difference from first departure and last arrival
         function showTimeDiff(ticket){
-            const dateDiff=new Date(ticket.itineraries[0].segments[ticket.itineraries[0].segments.length-1].departure.at)-new Date(ticket.itineraries[0].segments[0].departure.at);
-            console.log(new Date(dateDiff));
+            const dateDiff=new Date(ticket.itineraries[0].segments[ticket.itineraries[0].segments.length-1].arrival.at)-new Date(ticket.itineraries[0].segments[0].departure.at);
             let natija="";
-            if (new Date(dateDiff).getDate()>0){
-                natija=new Date(dateDiff).getDate()+" k, "
+            const kun=parseInt(dateDiff / 86400000);
+            const soat=parseInt((dateDiff % 86400000)/3600000);
+            const daqiqa=parseInt((dateDiff % 3600000)/60000);
+            if (kun>0){
+                natija=kun+" k, ";
             }
-            natija+=new Date(dateDiff).getHours()+"s, "+new Date(dateDiff).getMinutes()+" daq";
+            natija+=soat+"s, "+daqiqa+" daq";
             return natija
         }
+        // For show date as D MMM, DAY[3]
+        function formatDateToShow(date){
+            const week=[
+                "Yak",
+                "Dush",
+                "Sesh",
+                "Chor",
+                "Pay",
+                "Jum",
+                "Shan"
+                ]
+            const months=[
+                "Yan",
+                "Fev",
+                "Mar",
+                "Apr",
+                "May",
+                "Iyn",
+                "Iyl",
+                "Avg",
+                "Sen",
+                "Okt",
+                "Noy",
+                "Dek"
+            ]
+            return date.getDate()+" "+months[date.getMonth()]+", "+week[date.getDay()];
+        }
+        // This function executes if checkToken request will success and receives data as XMLHttpRequest event.
+        // If result is not success (on AuthError) redirects to login page.
+        function onCheckToken(event){
+            console.log(JSON.parse(event.target.response))
+            if (JSON.parse(event.target.response).status!=="success"){
+                window.location.href="./login.html"
+            }
+        }
+        // Function creates a Ticket's HTML code and appends to <div class='tickets'></div>
         function renderTicket(ticket){
             const from=JSON.parse(localStorage.getItem("air-properties")).from;
             const to=JSON.parse(localStorage.getItem("air-properties")).to;
@@ -312,7 +314,7 @@
                 <div class="ticket-head">
                     <div class="airport">
                         <img class="airport-logo" src="./img/airport.svg" alt="UzAir">
-                        <span class="airport-name">Uzbekistan Airways</span>
+                        <span class="airport-name">${ticket.itineraries[0].segments[0].departure.iataCode} - ${ticket.itineraries[0].segments[ticket.itineraries[0].segments.length-1].arrival.iataCode}</span>
                     </div>
                     <div class="bonus">
                         <span>+22</span>
@@ -326,22 +328,24 @@
                     </div>
                     <div class="fly-about">
                         <div class="fly-time">${showTimeDiff(ticket)}</div>
-                        <div class="fly-type">${ticket.itineraries[0].segments.length>1 ? `${ticket.itineraries[0].segments.length-1} ta qo'nish`: "To'g'ridan to'g'ri"}</div>
+                        <div class="fly-type">${ticket.itineraries[0].segments.length>1 ? ticket.itineraries[0].segments.length-1+" ta qo'nish": "To'g'ridan to'g'ri"}</div>
                     </div>
                 </div>
                 <div class="pricing">
-                    <button class="btn btn-primary">${parseInt(ticket.price.total)} ${ticket.price.currency}</button>
+                    <button class="btn btn-primary">${showMoney(parseInt(ticket.price.total))} ${ticket.price.currency}</button>
                     <div class="bonus">
                         <img src="./img/coin.png" alt="">
                         <span> 4 850</span>
                     </div>
                 </div>
                 <div class="i-dont">
-                    32 000 <span> x12 </span>
+                    ${showMoney(parseInt((parseInt(ticket.price.total)+parseInt(ticket.price.total)*0.1)/12))} <span> x12 </span>
                 </div>
             </div>`;
             document.querySelector(".tickets").innerHTML+=inHTML;
         }
+        // This function executes if getTickets request will success and receives data as XMLHttpRequest event.
+        // Checks the result. When data.length>0 sends each ticket to renderTicket(ticket). else works through error.
         function onTicketsSuccess(event){
             document.querySelector(".tickets").innerHTML="";
             var response=JSON.parse(event.target.response);
@@ -354,26 +358,59 @@
                     })
                 } else {
                     document.querySelector(".tickets").innerHTML="So'rov bo'yicha natijalar topilmadi :("
+                    sayError("So'rov bo'yicha natijalar topilmadi :(");
                 }
+            } else {
+                sayError("Xatolik. "+response.message);
             }
         }
-        function getTickets(){
+        // This function will create <div class='slider-item'></div> and returns sliderItem to renderSlider.
+        function createSlider(timeStamp, starts=new Date().getTime()){
+            const slider=document.createElement("DIV");
+            const date=new Date(timeStamp);
+            slider.classList.add("slider-item");
+            slider.innerHTML=`<span class="date">${formatDateToShow(date)}</span><span class="cost"> yuklanmoqda... </span>`;
+            slider.id="slider_"+timeStamp;
+            if (timeStamp==starts){
+                slider.classList.add("active");
+            }
+            return slider;
+        }
+        // Renders Slider Ribbon <div class="slider" style="width: calc(102px * {sliderItemsCount})"> ... ... ... </div>
+        function renderSlider(from, to){
+            const count=(to.date-from.date)/86400000;
+            const sliderContainer=document.querySelector(".slider");
+            sliderContainer.style.width=102*count+"px";
+            for(i = 0; i < count; i++){
+                const date = new Date(from.date + (i * 86400000));
+                const slider=createSlider(date.getTime(), from.date);
+                sliderContainer.appendChild(slider);
+            }
+        }
+        // Send request to server for tickets looking to localStorage's {air-properties} Item.
+        function getTickets(from, to, passengers){
+            const date=new Date(from.date).toISOString().split("T")[0]
+            if ( new Date(date)<= new Date()){
+                sayError("Tanlangan muddat bo'yicha chipta buyurtma qilib bo'lmaydi!");
+                window.location.href='aviabiletlar.html'
+                return
+            }
+            send_req(token+`/amadeus/search?from=${from.location.code}&to=${to.location.code}&date=${date}&adults=${passengers.count.kattalar}&children=${passengers.count.bolalar}&infants=${passengers.count.chaqaloqlar}&class=${passengers.class}`, "GET", JSON.stringify({}), onTicketsSuccess);
+        }
+        // Basic events, functionalities and some stuff for UX and getting correct values from elements
+        window.onload=function(){
+            checkToken();
             if (localStorage.getItem("air-properties")){
-                const from=JSON.parse(localStorage.getItem("air-properties")).from;
-                const to=JSON.parse(localStorage.getItem("air-properties")).to;
                 const passengers=JSON.parse(localStorage.getItem("air-properties")).passengers;
-                const date=new Date(from.date).toISOString().split("T")[0]
-                send_req(token+`/amadeus/search?from=${from.location.code}&to=${to.location.code}&date=${date}&adults=${passengers.count.kattalar}&children=${passengers.count.bolalar}&infants=${passengers.count.chaqaloqlar}&class=${passengers.class}`, "GET", JSON.stringify({}), onTicketsSuccess);
+                document.querySelector("header h2 span:nth-child(2)").innerHTML=`${parseInt(passengers.count.kattalar)+parseInt(passengers.count.bolalar)+parseInt(passengers.count.chaqaloqlar)} yo'lovchi, ${passengers.class}`;
+            } else {
+                window.location.href='./aviabiletlar.html'
             }
-        }
-        window.onload = function(){
-            document.body.innerHTML+=(`<div id="say_error">
-                        <div class="err_icon"> &times; </div>
-                        <p class="err_text">
-                            
-                        </p>
-                        </div>`)
-                        getTickets();
+            const from=JSON.parse(localStorage.getItem("air-properties")).from;
+            const to=JSON.parse(localStorage.getItem("air-properties")).to;
+            const passengers=JSON.parse(localStorage.getItem("air-properties")).passengers;
+            renderSlider(from,to);
+            getTickets(from, to, passengers);
             document.querySelectorAll(".slider-item").forEach(function(item){
                 item.addEventListener("click", function(event){
                     document.querySelectorAll(".slider-item.active").forEach(function(item_inner){
@@ -443,7 +480,7 @@
                     document.querySelector(".active #search-input").focus()
                 })
             })
-            checkToken();
+            
         }
     </script>
 </body>

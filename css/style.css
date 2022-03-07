@@ -912,6 +912,7 @@ section.bg-white .go-back svg path{
     width: 100px;
     flex-direction: column;
     justify-content: center;
+    cursor: pointer;
     align-items: center;
     padding: 8px;
     border-radius: 6px;

@@ -1,31 +1,29 @@
-document.body.innerHTML+=(`        <div id="say_error">
-<div class="err_icon"> &times; </div>
-<p class="err_text">
-    
-</p>
-</div>`)
-const errorDiv=document.querySelector("#say_error");
 let timeOutError;
 function sayError(error){
-    console.log(error)
-    if (timeOutError){
+    console.log(error);
+    if (document.querySelector("#say_error")){
+        document.querySelector("#say_error").remove();
         clearTimeout(timeOutError);
-        document.querySelector("#say_error").classList.remove("active");
-        document.querySelector("#say_error").querySelector(".err_text").innerText=error;
-        setTimeout(function(){
-            document.querySelector("#say_error").classList.add("active");
-        }, 1000)
-    } else {
-        document.querySelector("#say_error").querySelector(".err_text").innerText=error;
-        document.querySelector("#say_error").classList.add("active");
     }
+    error_div=document.createElement("div");
+    error_div.id="say_error";
+    error_div.innerHTML='<div class="err_icon"> × </div> <p class="err_text"> </p>'
+    document.body.append(error_div);
+    error_div.querySelector('.err_text').innerHTML=error;
+    setTimeout(function(){
+        document.querySelector("#say_error").classList.add("active");
+    }, 400)
     timeOutError=setTimeout(function(){
         document.querySelector("#say_error").classList.remove("active");
+        setTimeout(function(){
+            error_div.remove();
+        }, 200)
     }, 10000)
 }
 
 function req_error(event){
     sayError("Nomalum xatolik: '"+JSON.stringify(event.type)+"'. Internetga ulanishni tekshiring ");
+    console.log(event);
 }
 function req_load(event){
     console.log(event);
