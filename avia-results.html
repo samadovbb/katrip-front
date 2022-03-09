@@ -233,6 +233,44 @@
     <script src="./request.js"></script>
     <script>
         let allTickets=[];
+        // GET LIST OF AIRLINES
+        let airlines=[];
+        {
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", function(event){
+                airlines=JSON.parse(event.target.response);
+            }, false);
+            xhr.open("GET", "./CONST/airlines.json", true);
+            xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            xhr.send();
+        }
+        // GET LIST OF AIRPORTS
+        let AIRPORTS=[];
+        {
+            let xhr1 = new XMLHttpRequest();
+            xhr1.addEventListener("load", function(event){
+                AIRPORTS=JSON.parse(event.target.response);
+            }, false);
+            xhr1.open("GET", "./CONST/airports.json", true);
+            xhr1.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            xhr1.send();
+        }
+        // GET SINGLE AIRLINE INFO BY iataCode
+        function getAirline(code){
+            return airlines.find(function(airline){
+                if (airline.code==code){
+                    return true;
+                }
+            })
+        }
+        // GET SINGLE AIRPORT INFO BY iataCode
+        function getAirport(code){
+            return AIRPORTS.find(function(airport){
+                if (airport.code==code){
+                    return true;
+                }
+            })
+        }
         // For show money as MO NEY 000
         function showMoney(money){
             let result=money.toString().split("").reverse().map(function(digit,index){
@@ -257,6 +295,14 @@
                 to_minutes="0"+to_date.getMinutes();
             }
             return from_date.getHours()+":"+from_minutes+" - "+to_date.getHours()+":"+to_minutes;
+        }
+        // For show directions of ticket e.g. NYC - LON - TSK
+        function showTicketDirs(ticket){
+            let result=getAirport(ticket.itineraries[0].segments[0].departure.iataCode).cc;
+            for (i=0; i<ticket.itineraries[0].segments.length; i++){
+                result+=" - "+getAirport(ticket.itineraries[0].segments[i].arrival.iataCode).cc
+            }
+            return result;
         }
         // For show time difference from first departure and last arrival
         function showTimeDiff(ticket){
@@ -313,8 +359,8 @@
             const inHTML=`<div class="ticket-result">
                 <div class="ticket-head">
                     <div class="airport">
-                        <img class="airport-logo" src="./img/airport.svg" alt="UzAir">
-                        <span class="airport-name">${ticket.itineraries[0].segments[0].departure.iataCode} - ${ticket.itineraries[0].segments[ticket.itineraries[0].segments.length-1].arrival.iataCode}</span>
+                        <img class="airport-logo" src="https://mpics.avs.io/al_square/30/30/${ticket.itineraries[0].segments[0].carrierCode}.png" alt="UzAir">
+                        <span class="airport-name">${getAirline(ticket.itineraries[0].segments[0].carrierCode).name}</span>
                     </div>
                     <div class="bonus">
                         <span>+22</span>
@@ -324,7 +370,7 @@
                 <div class="ticket-info">
                     <div class="destinations">
                         <div class="times">${showTime(ticket)}</div>
-                        <div class="locations">${from.location.code} - ${to.location.code}</div>
+                        <div class="locations">${showTicketDirs(ticket)}</div>
                     </div>
                     <div class="fly-about">
                         <div class="fly-time">${showTimeDiff(ticket)}</div>

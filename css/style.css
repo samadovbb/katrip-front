@@ -1039,7 +1039,7 @@ section.bg-white .go-back svg path{
 .i-dont{
     margin-top: 3px;
     display: inline-block;
-    background-color: #CCEAFF;
+    background-color: #FED314;
     font-size: 14px;
     font-weight: 500;
 }
@@ -1100,6 +1100,10 @@ section.bg-white .go-back svg path{
 .air-info .air-name{
     font-weight: 400;
     font-size: 16px;
+}
+
+.airport-logo{
+    border-radius: 50%;
 }
 
 .air-info .air-long{
