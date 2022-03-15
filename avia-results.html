@@ -422,6 +422,16 @@
                         return singleTicket.id==ticketId
                     })
                     // console.log(selectedTicket);
+                    let subInfor='';
+                    selectedTicket.itineraries[0].segments.map(function(segment, index){ subInfor+=`<div class="parvoz-inner">
+                            <div class="p-vaqt"><div class="parvoz-time">${showAllTimes(selectedTicket).split("-")[index+1]}</div>
+                            <div class="parvoz-date">${formatDateToShow(new Date(selectedTicket.itineraries[0].segments[index].arrival.at))}</div></div>
+                            <div class="p-locations">
+                                <div class="p-region">${showTicketDirs(selectedTicket).split("-")[index+1]}</div>
+                                <div class="p-airport">${getAirport(selectedTicket.itineraries[0].segments[index].arrival.iataCode).n}</div>
+                            </div>
+                        </div>`
+                    })
                     const ticketInformation=`<div class="ticket-about">
                     <div class="regions">${showTicketDirs(selectedTicket)}</div>
                     <div class="bonus">
@@ -456,16 +466,7 @@
                                     <div class="p-airport">${getAirport(selectedTicket.itineraries[0].segments[0].departure.iataCode).n}</div>
                                 </div>
                             </div>
-                            ${selectedTicket.itineraries[0].segments.map(function(segment, index){ return (
-                                `<div class="parvoz-inner">
-                                <div class="p-vaqt"><div class="parvoz-time">${showAllTimes(selectedTicket).split("-")[index+1]}</div>
-                                <div class="parvoz-date">${formatDateToShow(new Date(selectedTicket.itineraries[0].segments[index].arrival.at))}</div></div>
-                                <div class="p-locations">
-                                    <div class="p-region">${showTicketDirs(selectedTicket).split("-")[index+1]}</div>
-                                    <div class="p-airport">${getAirport(selectedTicket.itineraries[0].segments[index].arrival.iataCode).n}</div>
-                                </div>
-                            </div>`
-                            )})}
+                            ${subInfor}
                         </div>
                     </div>
                 </div>`
