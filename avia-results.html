@@ -296,6 +296,31 @@
             }
             return from_date.getHours()+":"+from_minutes+" - "+to_date.getHours()+":"+to_minutes;
         }
+        function setTodayMin(cost){
+            document.querySelector(".slider-item.active .cost").innerText=showMoney(parseInt(cost))+' UZS'; 
+        }
+        function showAllTimes(ticket){
+            let result='';
+            const from_date=new Date(ticket.itineraries[0].segments[0].departure.at);
+            let from_minutes="";
+            if (from_date.getMinutes()>9){
+                from_minutes=from_date.getMinutes();
+            } else {
+                from_minutes="0"+from_date.getMinutes();
+            }
+            result=from_date.getHours()+":"+from_minutes;
+            for(i=0; i<ticket.itineraries[0].segments.length; i++){
+                let to_date=new Date(ticket.itineraries[0].segments[i].arrival.at)
+                let to_minutes="";
+                if (to_date.getMinutes()>9){
+                    to_minutes=to_date.getMinutes();
+                } else {
+                    to_minutes="0"+to_date.getMinutes();
+                }
+                result+=" - "+to_date.getHours()+":"+to_minutes;
+            }
+            return result;
+        }
         // For show directions of ticket e.g. NYC - LON - TSK
         function showTicketDirs(ticket){
             let result=getAirport(ticket.itineraries[0].segments[0].departure.iataCode).cc;
@@ -356,7 +381,7 @@
         function renderTicket(ticket){
             const from=JSON.parse(localStorage.getItem("air-properties")).from;
             const to=JSON.parse(localStorage.getItem("air-properties")).to;
-            const inHTML=`<div class="ticket-result">
+            const inHTML=`<div class="ticket-result" id="ticket_${ticket.id}">
                 <div class="ticket-head">
                     <div class="airport">
                         <img class="airport-logo" src="https://mpics.avs.io/al_square/30/30/${ticket.itineraries[0].segments[0].carrierCode}.png" alt="UzAir">
@@ -389,6 +414,66 @@
                 </div>
             </div>`;
             document.querySelector(".tickets").innerHTML+=inHTML;
+            document.querySelectorAll(".ticket-result").forEach(function(item){
+                item.addEventListener("click", function(){
+                    document.querySelector("#parvoz").classList.add("active");
+                    const ticketId=item.id.split("_")[1];
+                    const selectedTicket=allTickets.flightOffersSearch.find(function(singleTicket){
+                        return singleTicket.id==ticketId
+                    })
+                    // console.log(selectedTicket);
+                    const ticketInformation=`<div class="ticket-about">
+                    <div class="regions">${showTicketDirs(selectedTicket)}</div>
+                    <div class="bonus">
+                        <span>+22</span>
+                        <img src="./img/coin.png" alt="Bonus">
+                    </div>
+                </div>
+                <span class="ticket-date">${formatDateToShow(new Date(selectedTicket.itineraries[0].segments[0].departure.at))}</span>
+                <div class="ticket-content">
+                    <div class="airport-info">
+                        <img class="airport-logo" src="https://mpics.avs.io/al_square/30/30/${selectedTicket.itineraries[0].segments[0].carrierCode}.png" alt="airport">
+                        <div class="air-info">
+                            <div class="air-name">${getAirline(selectedTicket.itineraries[0].segments[0].carrierCode).name}</div>
+                            <div class="air-long">${showTimeDiff(selectedTicket)}</div>
+                        </div>
+                    </div>
+                    <div class="fly-content">
+                        <div class="left-img">
+                            <svg width="24" height="91" viewBox="0 0 24 91" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12.5" cy="3.5" r="2.5" transform="rotate(90 12.5 3.5)" stroke="#109BFF" stroke-width="2"/>
+                                <circle cx="12.5" cy="87.5" r="2.5" transform="rotate(90 12.5 87.5)" stroke="#109BFF" stroke-width="2"/>
+                                <line opacity="0.4" x1="12.5" y1="5.5" x2="12.5" y2="84.5" stroke="#109BFF" stroke-linecap="round" stroke-dasharray="2 4"/>
+                                <path d="M14.6111 48.7L14.6111 52.9C14.6111 53.457 14.3887 53.9911 13.9928 54.3849C13.5969 54.7787 13.0599 55 12.5 55C11.9401 55 11.4031 54.7787 11.0072 54.3849C10.6113 53.9911 10.3889 53.457 10.3889 52.9L10.3889 48.7L3 44.5L3 41.35L10.3889 43.45L10.3889 39.25L8.27778 37.15L8.27778 34L12.5 36.1L16.7222 34L16.7222 37.15L14.6111 39.25L14.6111 43.45L22 41.35L22 44.5L14.6111 48.7Z" fill="#109BFF"/>
+                            </svg>
+                        </div>
+                        <div class="parvoz">
+                            <div class="parvoz-inner">
+                                <div class="p-vaqt"><div class="parvoz-time">${showTime(selectedTicket).split("-")[0]}</div>
+                                <div class="parvoz-date">${formatDateToShow(new Date(selectedTicket.itineraries[0].segments[0].departure.at))}</div></div>
+                                <div class="p-locations">
+                                    <div class="p-region">${showTicketDirs(selectedTicket).split("-")[0]}</div>
+                                    <div class="p-airport">${getAirport(selectedTicket.itineraries[0].segments[0].departure.iataCode).n}</div>
+                                </div>
+                            </div>
+                            ${selectedTicket.itineraries[0].segments.map(function(segment, index){ return (
+                                `<div class="parvoz-inner">
+                                <div class="p-vaqt"><div class="parvoz-time">${showAllTimes(selectedTicket).split("-")[index+1]}</div>
+                                <div class="parvoz-date">${formatDateToShow(new Date(selectedTicket.itineraries[0].segments[index].arrival.at))}</div></div>
+                                <div class="p-locations">
+                                    <div class="p-region">${showTicketDirs(selectedTicket).split("-")[index+1]}</div>
+                                    <div class="p-airport">${getAirport(selectedTicket.itineraries[0].segments[index].arrival.iataCode).n}</div>
+                                </div>
+                            </div>`
+                            )})}
+                        </div>
+                    </div>
+                </div>`
+                console.log(ticketInformation);
+                document.querySelector("#parvoz .window-inner").innerHTML=ticketInformation;
+                    item.classList.add("pressed")
+                })
+            })
         }
         // This function executes if getTickets request will success and receives data as XMLHttpRequest event.
         // Checks the result. When data.length>0 sends each ticket to renderTicket(ticket). else works through error.
@@ -402,6 +487,7 @@
                     response.data.flightOffersSearch.forEach(function(item){
                         renderTicket(item);
                     })
+                    setTodayMin(allTickets.flightOffersSearch[0].price.total)
                 } else {
                     document.querySelector(".tickets").innerHTML="So'rov bo'yicha natijalar topilmadi :("
                     sayError("So'rov bo'yicha natijalar topilmadi :(");
@@ -446,14 +532,22 @@
         // Basic events, functionalities and some stuff for UX and getting correct values from elements
         window.onload=function(){
             checkToken();
+            const from=JSON.parse(localStorage.getItem("air-properties")).from;
+            const to=JSON.parse(localStorage.getItem("air-properties")).to;
             if (localStorage.getItem("air-properties")){
                 const passengers=JSON.parse(localStorage.getItem("air-properties")).passengers;
                 document.querySelector("header h2 span:nth-child(2)").innerHTML=`${parseInt(passengers.count.kattalar)+parseInt(passengers.count.bolalar)+parseInt(passengers.count.chaqaloqlar)} yo'lovchi, ${passengers.class}`;
+                document.querySelector("header h2 span:nth-child(1)").innerHTML=`
+                    ${from.location.name.split(":")[1]} <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.16663 10H15.8333" stroke="#1A1A1A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.5 13.3333L15.8333 10" stroke="#1A1A1A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.5 6.66663L15.8333 9.99996" stroke="#1A1A1A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg> ${to.location.name.split(":")[1]}
+                `
             } else {
                 window.location.href='./aviabiletlar.html'
             }
-            const from=JSON.parse(localStorage.getItem("air-properties")).from;
-            const to=JSON.parse(localStorage.getItem("air-properties")).to;
+            
             const passengers=JSON.parse(localStorage.getItem("air-properties")).passengers;
             renderSlider(from,to);
             getTickets(from, to, passengers);

@@ -905,10 +905,11 @@ section.bg-white .go-back svg path{
 .slider{
     overflow-x: auto;
     background-color: #E8E8E8;
+    display: flex;
 }
 
 .slider-item{
-    display: inline-block;
+    display: flex;
     width: 100px;
     flex-direction: column;
     justify-content: center;
@@ -1166,6 +1167,7 @@ section.bg-white .go-back svg path{
     line-height: 18px;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     letter-spacing: 0.3px;
     color: #000000;
 }
